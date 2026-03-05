@@ -1,0 +1,100 @@
+.main-header {
+    background-color: var(--axis-black); 
+    color: var(--axis-white);
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid var(--axis-blue); 
+}
+.logo {
+    font-size: var(--size-logo);
+    font-weight: 900;
+    letter-spacing:-1px;
+    margin-bottom: 8px;
+}
+
+.tagline {
+    font-size: 18px;
+    color: var(--axis-white);
+    font-weight: 500;
+}
+
+/* The Row Container */
+.row_section {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Space between cards */
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+/* Individual Card (Column) */
+.column {
+    flex: 1;
+    background-color: var(--axis-white);
+    border: 2px solid #e5e5e5;
+    padding: 40px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content up, button down */
+    transition: all 0.3s ease;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.column:hover {
+    border-color: var(--axis-black);
+    box-shadow: var(--shadow-subtle);
+    transform: translateY(-6px);
+}
+
+/* Text inside cards */
+.content h2 {
+    font-size: var(--size-h2);
+    margin-bottom: 15px;
+}
+
+.content p {
+    color: var(--axis-gray-medium);
+    font-size: var(--size-body);
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: var(--axis-black);
+    color: var(--axis-white);
+    border: none;
+    padding: 16px;
+    font-size: var(--size-button);
+    font-weight: var(--button-text-weight);
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--axis-gray-dark);
+     transform: translateY(-2px);
+}
+
+.rider_column {
+    background: 
+        linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.92)),
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxfSki-qeZBBja9FruZwm2CXv-nEGdCosoUQ&s"); /* Direct JPG link */
+    background-size: cover;
+    background-position: center;
+}
+
+.driver_column {
+    background: 
+        linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.92)),
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS96d4aVEF63awiGwYGcwjUPuYbMwSrLf6Yyw&s"); /* Direct JPG link */
+    background-size: cover;
+    background-position: center;
+}
