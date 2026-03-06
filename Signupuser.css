@@ -1,25 +1,17 @@
-
-/* Center the box on the screen */
-.Login-container {
+.SignUp-Container {
     display: flex;
     justify-content: center;
-    padding: 60px 20px;
+    padding: 10px 10px;
 }
 
-.Login-box {
+.SignupBox {
     width: 100%;
     max-width: 450px; /* Standard width for login cards */
     background-color: var(--axis-white);
     padding: 40px;
+    display: flex;
+    flex-direction: column;
 }
-
-h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    font-weight: 500;
-}
-
-
 .main-input {
     width: 100%;
     padding: 12px;
@@ -30,35 +22,11 @@ h2 {
     margin-bottom: 20px;
     transition: 0.2s;
 }
-
 .main-input:focus {
     border-color: var(--axis-black);
     background-color: var(--axis-white);
     outline: none;
 }
-
-
-
-
-
-.divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: var(--axis-gray-medium);
-    margin: 25px 0;
-    font-size: 14px;
-}
-
-.divider::before, .divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.divider:not(:empty)::before { margin-right: .5em; }
-.divider:not(:empty)::after { margin-left: .5em; }
-
 .btn-secondary {
     width: 100%;
     background-color: var(--axis-gray-light);
@@ -72,17 +40,31 @@ h2 {
     justify-content: center;
     gap: 10px;
     cursor: pointer;
-}
-
-.footer-note {
-    font-size: 12px;
-    color: var(--axis-gray-medium);
-    margin-top: 25px;
-    line-height: 1.4;
+    font-size: 16px;
 }
 .full-width {
     width: 100%;
     border-radius: 8px;
     background-color: var(--axis-black);
     color: var(--axis-white);
+}
+/* Add this to your Signupuser.css */
+.SignupBox h1 {
+    font-size: var(--size-h2);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 15px; /* Creates clean space between each field */
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    color: var(--axis-gray-medium);
 }
