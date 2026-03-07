@@ -49,3 +49,32 @@ body {
     flex-direction: column;
     border-bottom: 2px solid var(--axis-blue); 
 }
+.Normal-header {
+    background-color: var(--axis-black); 
+    color: var(--axis-white);
+    padding: 10px 10px;
+    width: 100%;
+    display: flex;
+    border-bottom: 2px solid var(--axis-blue); 
+    gap: 50px;
+}
+.List-elements{
+  display: flex;
+  gap: 50px;
+  list-style-type: none;
+  margin-top: 30px;
+}
+.Link-element{
+text-decoration: none;
+color: var(--axis-white);
+}
+.Link-element.active {
+    border-bottom: 2px solid var(--axis-white);
+    padding-bottom: 5px;
+}
+
+.Link-element:active {
+    border-bottom: 2px solid var(--axis-white);
+    padding-bottom: 5px;
+}
+

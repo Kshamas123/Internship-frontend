@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="RideRequest.css">
+</head>
+
+<body>
+    <header>
+    <Nav class="Normal-header">
+        <h1>Uber</h1>
+        <ul class="List-elements">
+            <li><a href="RideRequest.html" class="Link-element active">Make a Ride Request</a></li>
+            <li><a href="TripHistory.html" class="Link-element">My Rides</a></li>
+        </ul>
+    </Nav>
+    </header>
+
+    <div id="Trip-request-Container">
+       <div class="Trip-box">
+        <div id="Trip-rquest-box">
+        <h1>Ride Request</h1>
+        <form  action="/trip-request" method="post">
+                <div class="input-group">
+                    <label for="Pickup_Location">Pickup Location:</label>
+                    <input type="text" name="Pickup_Location" id="Pickup_Location" placeholder="Enter Pickup Location"  required>
+                </div>
+
+                <div class="input-group">
+                    <label for="Drop_Location">Drop Location:</label>
+                    <input type="text" name="Drop_Location" id="Drop_Location" placeholder="Enter Drop Location" required>
+                </div>
+        </form>
+        </div>
+       </div>
+       <div class="Trip-box">
+        <div id="Trip-rquest-image">
+HELLO
+        </div>
+       </div>
+    </div>
+</body>
+
+</html>
