@@ -1,9 +1,141 @@
-#Trip-request-Container{
+/* Layout Container */
+#Trip-request-Container {
     display: flex;
     justify-content: center;
-    gap: 40px; /* Space between cards */
-    padding: 20px;
-    max-width: 1100px;
-    margin: 0 auto;
-    margin-top: 80px;
+    align-items: flex-start; /* Keeps the form at the top */
+    gap: 20px;
+    padding: 20px 40px;
+    max-width: 1400px; /* Increased to allow for a bigger map */
+    margin: 10px auto 0 auto;
+}
+
+/* FORM SIDE */
+.Trip-box:first-child {
+    flex: 0 0 400px;
+}
+
+/* THE MAP SIDE  */
+.Trip-box:last-child {
+    flex: 1; /* Takes up all remaining space */
+}
+
+/* The White Box containing the Form */
+#Trip-rquest-box {
+    width: 100%;
+    background-color: var(--axis-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    border: 1px;
+}
+
+#Trip-rquest-box h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+    color: var(--axis-gray-medium);
+}
+
+.main-input {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--axis-gray-light);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.2s ease;
+}
+
+.main-input:focus {
+    border-color: var(--axis-black);
+    background-color: var(--axis-white);
+    outline: none;
+}
+
+
+.btn-secondary {
+    width: 100%;
+    border: none;
+    padding: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.full-width {
+    background-color: var(--axis-black);
+    color: var(--axis-white);
+}
+
+.full-width:hover {
+    background-color: var(--axis-gray-dark);
+}
+
+
+.map-image {
+    width: 100%;
+    height: 600px; /* Fixed height for a large look */
+    object-fit: cover; /* Ensures image isn't squashed */
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+}
+/* Optimized for Tablets and smaller Laptops */
+@media (max-width: 1024px) {
+    #Trip-request-Container {
+        max-width: 100%;
+        padding: 10px;
+        gap: 15px;
+        /* Keeps them side-by-side */
+        display: flex; 
+        flex-direction: row; 
+    }
+
+    /* Make the form box narrower to save space for the map */
+    .Trip-box:first-child {
+        flex: 0 0 30%; /* Form takes only 30% of the width */
+        min-width: 280px; /* But never gets smaller than 280px so text fits */
+    }
+
+    /* Make the map expand to fill the rest */
+    .Trip-box:last-child {
+        flex: 1; 
+        height: 500px; /* Keeps the map "Big" and tall */
+    }
+
+    .map-image {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+/* Only stack on very small mobile phones */
+@media (max-width: 480px) {
+    #Trip-request-Container {
+        flex-direction: column;
+    }
+    .Trip-box:first-child, .Trip-box:last-child {
+        flex: 0 0 100%;
+    }
 }

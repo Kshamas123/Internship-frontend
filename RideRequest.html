@@ -27,21 +27,24 @@
         <form  action="/trip-request" method="post">
                 <div class="input-group">
                     <label for="Pickup_Location">Pickup Location:</label>
-                    <input type="text" name="Pickup_Location" id="Pickup_Location" placeholder="Enter Pickup Location"  required>
+                    <input type="text" name="Pickup_Location" id="Pickup_Location" placeholder="Enter Pickup Location"  class="main-input" required>
                 </div>
 
                 <div class="input-group">
                     <label for="Drop_Location">Drop Location:</label>
-                    <input type="text" name="Drop_Location" id="Drop_Location" placeholder="Enter Drop Location" required>
+                    <input type="text" name="Drop_Location" id="Drop_Location" placeholder="Enter Drop Location"  class="main-input"  required>
                 </div>
+                <button type="submit" class="btn-secondary full-width">Continue</button>
         </form>
         </div>
        </div>
        <div class="Trip-box">
-        <div id="Trip-rquest-image">
-HELLO
-        </div>
-       </div>
+    <div id="Trip-rquest-image">
+        <img src="image.png" 
+             alt="City Map Route" 
+             class="map-image">
+    </div>
+</div>
     </div>
 </body>
 
