@@ -19,7 +19,7 @@
     border: 2px solid transparent;
     border-radius: 8px;
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     transition: 0.2s;
 }
 .main-input:focus {
@@ -67,4 +67,62 @@ label {
     letter-spacing: 0.5px;
     margin-bottom: 8px;
     color: var(--axis-gray-medium);
+}
+
+/* Container for the whole section */
+.Uber-benfituser-section {
+    background-color: var(--axis-black);
+    color: var(--axis-white);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.h1-benefit {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.benefit-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; 
+}
+
+.benefit-card {
+    flex: 1;
+    min-width: 280px;
+    background-color: var(--axis-white);
+    padding: 30px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    color: var(--axis-black);
+    border: var(--axis-gray-medium);
+   
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--axis-white);
+}
+
+
+.benefit-icon {
+    font-size: 40px;
+    color: var(--axis-black);
+    margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.benefit-card p {
+    font-size: 14px;
+    color: var(--axis-gray-medium);
+    line-height: 1.6;
 }
