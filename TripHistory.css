@@ -41,6 +41,6 @@
 }
 
 .Trip-history-box a:hover {
-    background-color:var(--axis-black) /* Dark gray hover effect */
+    background-color:var(--axis-black);/* Dark gray hover effect */
     transform: scale(1.02); /* Very subtle pop-out effect */
 }
