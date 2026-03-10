@@ -70,7 +70,7 @@ label {
 }
 
 /* Container for the whole section */
-.Uber-benfituser-section {
+.benfituser-section {
     background-color: var(--axis-black);
     color: var(--axis-white);
     padding: 60px 20px;
