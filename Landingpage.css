@@ -5,7 +5,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    flex-wrap:wrap;
     align-items: center;
     border-bottom: 2px solid var(--axis-blue); 
 }
@@ -98,3 +97,26 @@
     background-size: cover;
     background-position: center;
 }
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .row_section {
+        flex-direction: column; /* Stacks the cards vertically */
+        gap: 20px;              /* Reduces space between cards */
+        margin-top: 30px;       /* Reduces top margin so user doesn't have to scroll as much */
+        padding: 15px;
+    }
+
+    .column {
+        height: auto;           /* Let the height grow with the content */
+        min-height: 280px;      /* Keeps a nice size for the background image */
+        padding: 30px 20px;     /* Slightly less padding to save screen space */
+    }
+
+    .logo {
+        font-size: 40px;        /* Shrinks logo slightly so it fits better on small screens */
+    }
+
+    .tagline {
+        font-size: 16px;
+    }
+        }
