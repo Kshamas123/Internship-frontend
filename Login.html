@@ -18,10 +18,10 @@
             <h2>What's your phone number or email?</h2>
             
             <form class="Input-section">
-                <input type="text" placeholder="Enter phone number or email" class="main-input">
-                <button type="submit" class="btn-secondary full-width">Continue</button>
+                <input type="text" placeholder="Enter phone number or email" class="main-input" required>
+                <button type="submit" class="btn-secondary full-width" onclick="GoToRideRequest()">Continue</button>
             </form>
-            <p>New User? <a href="Signupuser.html">SignUp</a></p>
+            <p class="signup-prompt">New to Axis? <a href="Signupuser.html">Create an account</a></p>
 
             <div class="divider"><span>or</span></div>
 
@@ -33,5 +33,10 @@
             <p class="footer-note">By proceeding, you consent to get calls, WhatsApp or SMS messages, including by automated means, from Axis and its affiliates to the number provided.</p>
         </div>
     </main>
+    <script>
+        function GoToRideRequest(){
+            location.href='RideRequest.html'
+        }
+    </script>
 </body>
 </html>

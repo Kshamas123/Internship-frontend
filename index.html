@@ -20,7 +20,7 @@
                 <h2>RIDER</h2>
                 <p>Ride with us. Get where you're going smoothly.</p>
             </div>
-            <button class="btn-primary">LOGIN TO RIDE</button>
+            <button class="btn-primary" onclick="GoToUserLogin()">LOGIN TO RIDE</button>
         </div>
 
         <div class="column driver_column">
@@ -28,8 +28,18 @@
                 <h2>DRIVER</h2>
                 <p>Drive with us. Your car, your schedule, your earnings.</p>
             </div>
-            <button class="btn-primary">LOGIN TO DRIVE</button>
+            <button class="btn-primary" onclick="GoToDriverLogin()">LOGIN TO DRIVE</button>
         </div>
     </div>
+    <script>
+        function GoToUserLogin()
+        {
+            location.href='Login.html'
+        }
+        function GoToDriverLogin()
+        {
+            location.href='DriverLogin.html'
+        }
+    </script>
 </body>
 </html>

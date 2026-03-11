@@ -3,7 +3,7 @@
 .Login-container {
     display: flex;
     justify-content: center;
-    padding: 60px 20px;
+    padding: 20px 10px;
 }
 
 .Login-box {
@@ -37,6 +37,23 @@ h2 {
     outline: none;
 }
 
+.signup-prompt {
+    margin-top: 15px;
+    font-size: 16px;
+    color: var(--axis-gray-medium);
+}
+
+.signup-prompt a {
+    color: var(--axis-black);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: 0.2s;
+}
+
+.signup-prompt a:hover {
+    border-bottom: 1px solid var(--axis-black);
+}
 
 
 
@@ -47,7 +64,7 @@ h2 {
     text-align: center;
     color: var(--axis-gray-medium);
     margin: 25px 0;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .divider::before, .divider::after {
@@ -72,10 +89,11 @@ h2 {
     justify-content: center;
     gap: 10px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .footer-note {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--axis-gray-medium);
     margin-top: 25px;
     line-height: 1.4;
