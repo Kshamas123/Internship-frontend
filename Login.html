@@ -18,8 +18,8 @@
             <h2>What's your phone number or email?</h2>
             
             <form class="Input-section">
-                <input type="text" placeholder="Enter phone number or email" class="main-input" required>
-                <button type="submit" class="btn-secondary full-width" onclick="GoToRideRequest()">Continue</button>
+                <input type="text" type="email" placeholder="Enter phone number or email" class="main-input" id="LoginDetails" autocomplete="off" required>
+                <button type="submit" class="btn-secondary full-width" onclick="GoToRideRequest(event)">Continue</button>
             </form>
             <p class="signup-prompt">New to Axis? <a href="Signupuser.html">Create an account</a></p>
 
@@ -34,9 +34,32 @@
         </div>
     </main>
     <script>
-        function GoToRideRequest(){
-            location.href='RideRequest.html'
-        }
+        function GoToRideRequest(event) {
+    event.preventDefault(); 
+
+    let details = document.getElementById('LoginDetails');
+    let devalue = details.value.trim(); 
+
+    // 1. Check if empty
+    if (!devalue) {
+        alert('Please enter your phone number or email.');
+        return false;
+    } 
+
+
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const phonePattern = /^\+?[0-9]{10,15}$/;
+
+    const normalizedInput = devalue.replace(/[^0-9+a-zA-Z@._-]/g, ''); 
+
+    // 4. Test against both
+    if (emailPattern.test(devalue) || phonePattern.test(normalizedInput)) {
+        window.location.href = 'RideRequest.html';
+    } else {
+        alert('Please enter a valid phone number or email.');
+        return false; 
+    }
+}
     </script>
 </body>
 </html>

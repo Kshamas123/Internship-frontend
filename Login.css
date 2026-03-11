@@ -104,3 +104,17 @@ h2 {
     background-color: var(--axis-black);
     color: var(--axis-white);
 }
+
+/* Add this to Login.css */
+.input-error {
+    border: 2px solid #E22121 !important; /* A professional red */
+    background-color: #FFF1F1 !important;
+}
+
+.error-text {
+    color: #E22121;
+    font-size: 12px;
+    margin-top: -15px; /* Pull it closer to the input */
+    margin-bottom: 15px;
+    display: none; /* Hidden by default */
+}
