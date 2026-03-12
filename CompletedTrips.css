@@ -10,6 +10,9 @@
     box-shadow: 0 4px 12px var(--axis-gray-light);
     box-sizing: border-box; /* Ensures padding doesn't break width */
 }
+.TripsC:hover{
+    transform: scale(1.1);
+}
 
 /* Header */
 .Top-section {
@@ -71,14 +74,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid var(--axis-gray-light);
+    border-top: 1px solid var(--axis-gray-dark);
     padding-top: 15px;
     flex-wrap: wrap; /* Wraps items if name is too long on small screens */
     gap: 10px;
 }
 
 .driver-info { display: flex; align-items: center; gap: 10px; }
-.driver-thumb { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: #eee; }
+.driver-thumb { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: var(--axis-gray-light); }
 .driver-info p { margin: 0; font-size: 14px; }
 
 .rating-badge {

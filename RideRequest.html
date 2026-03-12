@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="GlobalStyle.css">
     <link rel="stylesheet" href="RideRequest.css">
 </head>
@@ -14,8 +15,21 @@
     <Nav class="Normal-header">
         <h1>Axis</h1>
         <ul class="List-elements">
-            <li><a href="RideRequest.html" class="Link-element active">Make a Ride Request</a></li>
+            <li><a href="RideRequest.html" class="Link-element active">Ride Now</a></li>
             <li><a href="RequestHistory.html" class="Link-element">My Rides</a></li>
+           <li class="user-profile right">
+    <i class="fa-solid fa-circle-user dropbtn" onclick="toggleDropdown()" style="font-size:2.5rem;"></i>
+    
+    <div id="myDropdown" class="dropdown-content">
+        <div class="user-info-header">
+            <strong>Kshama</strong>
+        </div>
+        <hr>
+        <a href="Profile.html"><i class="fa-solid fa-user"></i> My Profile</a>
+        <a href="Settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+       <a href="index.html" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+</li>
         </ul>
     </Nav>
     </header>
@@ -40,12 +54,28 @@
        </div>
        <div class="Trip-box">
     <div id="Trip-rquest-image">
-        <img src="image2.png" 
-             alt="City Map Route" 
-             class="map-image">
+         <div id="Trip-rquest-image">
+       <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15555.18517791924!2d74.83901575!3d12.9208103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1773337104154!5m2!1sen!2sin" class="map-image" allowfullscreen="yes" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
     </div>
 </div>
     </div>
 </body>
+<script>function toggleDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
 
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}</script>
 </html>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="GlobalStyle.css">
     <link rel="stylesheet" href="TripHistory.css">
     <link rel="stylesheet" href="CompletedTrips.css">
@@ -15,8 +16,21 @@
         <Nav class="Normal-header">
             <h1>Axis</h1>
             <ul class="List-elements">
-                <li><a href="RideRequest.html" class="Link-element">Make a Ride Request</a></li>
+                <li><a href="RideRequest.html" class="Link-element">Ride Now</a></li>
                 <li><a href="TripHistory.html" class="Link-element active">My Rides</a></li>
+                 <li class="user-profile right">
+    <i class="fa-solid fa-circle-user dropbtn" onclick="toggleDropdown()" style="font-size:2.5rem;"></i>
+    
+    <div id="myDropdown" class="dropdown-content">
+        <div class="user-info-header">
+            <strong>Kshama</strong>
+        </div>
+        <hr>
+        <a href="Profile.html"><i class="fa-solid fa-user"></i> My Profile</a>
+        <a href="Settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+        <a href="index.html" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+</li>
             </ul>
         </Nav>
     </header>
@@ -82,7 +96,7 @@
         </div>
         <div class="Place-history">
             <p class="address">BTM Layout, Bengaluru, Karnataka</p>
-            <p class="address">Kempegowda Int'l Airport Rd, Bengaluru</p>
+            <p class="address">Whitefield, Bengaluru</p>
         </div>
     </div>
 
@@ -105,6 +119,22 @@
     function GoToCompletedHistory() {
         location.href = 'CompletedTripHistory.html'
     }
+    function toggleDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
 </script>
 
 </html>
