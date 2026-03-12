@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="ActiveHistory.css">
+    <link rel="stylesheet" href="TripHistory.css">
+</head>
+
+<body>
+    <header>
+    <Nav class="Normal-header">
+        <h1>Axis</h1>
+        <ul class="List-elements">
+            <li><a href="RideRequest.html" class="Link-element">Make a Ride Request</a></li>
+            <li><a href="TripHistory.html" class="Link-element active">My Rides</a></li>
+        </ul>
+    </Nav>
+    </header>
+  
+  <div class="container">
+    <div class="switch">
+        <input id="switch-y" name="tripple" type="radio" value="Y" class="switch-input" />
+        <label for="switch-y" class="switch-label" onclick="GoToRequestHistory()">Submitted</label>
+
+        <input id="switch-i" name="tripple" type="radio" value="I" class="switch-input" checked/>
+        <label for="switch-i" class="switch-label" onclick="GoToActiveHistory()">In Progress</label>
+
+        <input id="switch-n" name="tripple" type="radio" value="N" class="switch-input" />
+        <label for="switch-n" class="switch-label" onclick="GoToCompletedHistory()">Completed</label>
+
+        <span class="switch-selector"></span>
+    </div>
+</div>
+    <section class="Trip-history-section">
+    <div class="Trip-history-box">
+        <img src="image.png" alt="No history">
+        
+        <h2>No Active Trip found.</h2>
+        <p>Your Active Trips will appear here.</p>
+        
+        <a href="RideRequest.html">Request a ride</a>
+    </div>
+</section>
+</body>
+<script>
+    function GoToRequestHistory(){
+        location.href='RequestHistory.html'
+    }
+    function GoToActiveHistory(){
+        location.href='ActiveTripHistory.html'
+    }
+    function GoToCompletedHistory(){
+        location.href='CompletedTripHistory.html'
+    }
+</script>
+</html>
