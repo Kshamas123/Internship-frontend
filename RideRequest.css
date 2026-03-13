@@ -203,6 +203,63 @@ label {
     border: 1px solid #e5e5e5;
 }
 
+/* Container for the input and suggestions */
+.input-group {
+    position: relative; /* CRITICAL for absolute positioning of list */
+    margin-bottom: 20px;
+}
+
+#placelist {
+    display: none; /* Controlled by JS */
+    position: absolute;
+    top: 100%; /* Sits right under the input */
+    left: 0;
+    width: 100%;
+    background-color: var(--axis-white);
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    z-index: 1000;
+    padding: 5px 0;
+    margin-top: 5px;
+    border: 1px solid var(--axis-gray-light);
+    list-style: none;
+}
+#placelist2 {
+    display: none; /* Controlled by JS */
+    position: absolute;
+    top: 100%; /* Sits right under the input */
+    left: 0;
+    width: 100%;
+    background-color: var(--axis-white);
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    z-index: 1000;
+    padding: 5px 0;
+    margin-top: 5px;
+    border: 1px solid var(--axis-gray-light);
+    list-style: none;
+}
+
+.place-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--axis-black);
+    border-bottom: 1px solid #f9f9f9;
+    transition: background 0.2s;
+}
+
+.place-item:last-child { border-bottom: none; }
+
+.place-item:hover {
+    background-color: #f1f1f1;
+}
+
+.place-item i {
+    margin-right: 10px;
+    color: var(--axis-gray-medium);
+}
+
 /* Optimized for Tablets and smaller Laptops */
 @media (max-width: 1024px) {
     #Trip-request-Container {

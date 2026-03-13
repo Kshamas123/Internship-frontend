@@ -12,70 +12,297 @@
 
 <body>
     <header>
-    <Nav class="Normal-header">
-        <h1>Axis</h1>
-        <ul class="List-elements">
-            <li><a href="RideRequest.html" class="Link-element active">Ride Now</a></li>
-            <li><a href="RequestHistory.html" class="Link-element">My Rides</a></li>
-           <li class="user-profile right">
-    <i class="fa-solid fa-circle-user dropbtn" onclick="toggleDropdown()" style="font-size:2.5rem;"></i>
-    
-    <div id="myDropdown" class="dropdown-content">
-        <div class="user-info-header">
-            <strong>Kshama</strong>
-        </div>
-        <hr>
-        <a href="Profile.html"><i class="fa-solid fa-user"></i> My Profile</a>
-        <a href="Settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
-       <a href="index.html" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-    </div>
-</li>
-        </ul>
-    </Nav>
+        <Nav class="Normal-header">
+            <h1>Axis</h1>
+            <ul class="List-elements">
+                <li><a href="RideRequest.html" class="Link-element active">Ride Now</a></li>
+                <li><a href="RequestHistory.html" class="Link-element">My Rides</a></li>
+                <li class="user-profile right">
+                    <i class="fa-solid fa-circle-user dropbtn" onclick="toggleDropdown()" style="font-size:2.5rem;"></i>
+
+                    <div id="myDropdown" class="dropdown-content">
+                        <div class="user-info-header">
+                            <strong>Kshama</strong>
+                        </div>
+                        <hr>
+                        <a href="Profile.html"><i class="fa-solid fa-user"></i> My Profile</a>
+                        <a href="Settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+                        <a href="index.html" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i>
+                            Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </Nav>
     </header>
 
     <div id="Trip-request-Container">
-       <div class="Trip-box">
-        <div id="Trip-rquest-box">
-        <h1>Ride Request</h1>
-        <form  action="/trip-request" method="post">
-                <div class="input-group">
-                    <label for="Pickup_Location">Pickup Location:</label>
-                    <input type="text" name="Pickup_Location" id="Pickup_Location" placeholder="Enter Pickup Location"  class="main-input" required>
-                </div>
+        <div class="Trip-box">
+            <div id="Trip-rquest-box">
+                <h1>Ride Request</h1>
+                <form>
+                    <div class="input-group">
+                        <label for="Pickup_Location">Pickup Location:</label>
 
-                <div class="input-group">
-                    <label for="Drop_Location">Drop Location:</label>
-                    <input type="text" name="Drop_Location" id="Drop_Location" placeholder="Enter Drop Location"  class="main-input"  required>
-                </div>
-                <button type="submit" class="btn-secondary full-width">Continue</button>
-        </form>
+
+                        <input type="text" name="Pickup_Location" id="Pickup_Location"
+                            placeholder="Enter Pickup Location" oninput="showOptions()" class="main-input" required
+                            autocomplete="off">
+                        <ul id="placelist"></ul>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Drop_Location">Drop Location:</label>
+                        <input type="text" name="Drop_Location" id="Drop_Location" placeholder="Enter Drop Location"
+                            oninput="showOptions_2()" class="main-input" required autocomplete="off">
+                        <ul id="placelist2"></ul>
+                    </div>
+                    <button type="submit" class="btn-secondary full-width" onclick="GotoTripshowpage(event)">Continue</button>
+                </form>
+            </div>
         </div>
-       </div>
-       <div class="Trip-box">
-    <div id="Trip-rquest-image">
-         <div id="Trip-rquest-image">
-       <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15555.18517791924!2d74.83901575!3d12.9208103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1773337104154!5m2!1sen!2sin" class="map-image" allowfullscreen="yes" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="Trip-box">
+            <div id="Trip-rquest-image">
+                <div id="Trip-rquest-image">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15555.18517791924!2d74.83901575!3d12.9208103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1773337104154!5m2!1sen!2sin"
+                        class="map-image" allowfullscreen="yes" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-    </div>
-</div>
     </div>
 </body>
-<script>function toggleDropdown() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+<script>
+    const indianLocations = [
+        // BENGALURU, KARNATAKA
+        { locality: "BTM Layout 2nd Stage", city: "Bengaluru", state: "Karnataka", pincode: "560076" },
+        { locality: "BTM Layout 1st Stage", city: "Bengaluru", state: "Karnataka", pincode: "560029" },
+        { locality: "HSR Layout", city: "Bengaluru", state: "Karnataka", pincode: "560102" },
+        { locality: "Indiranagar", city: "Bengaluru", state: "Karnataka", pincode: "560038" },
+        { locality: "Koramangala", city: "Bengaluru", state: "Karnataka", pincode: "560034" },
+        { locality: "Whitefield", city: "Bengaluru", state: "Karnataka", pincode: "560066" },
+        { locality: "Electronic City", city: "Bengaluru", state: "Karnataka", pincode: "560100" },
+        { locality: "Jayanagar", city: "Bengaluru", state: "Karnataka", pincode: "560041" },
+        { locality: "JP Nagar", city: "Bengaluru", state: "Karnataka", pincode: "560078" },
+        { locality: "Marathahalli", city: "Bengaluru", state: "Karnataka", pincode: "560037" },
+        { locality: "Hebbal", city: "Bengaluru", state: "Karnataka", pincode: "560024" },
+        { locality: "Rajajinagar", city: "Bengaluru", state: "Karnataka", pincode: "560010" },
+        { locality: "Malleshwaram", city: "Bengaluru", state: "Karnataka", pincode: "560003" },
+        { locality: "Bellandur", city: "Bengaluru", state: "Karnataka", pincode: "560103" },
+        { locality: "Banashankari", city: "Bengaluru", state: "Karnataka", pincode: "560050" },
+        { locality: "Basavanagudi", city: "Bengaluru", state: "Karnataka", pincode: "560004" },
+        { locality: "Domlur", city: "Bengaluru", state: "Karnataka", pincode: "560071" },
+        { locality: "Yelahanka", city: "Bengaluru", state: "Karnataka", pincode: "560064" },
+        { locality: "Bannerghatta Road", city: "Bengaluru", state: "Karnataka", pincode: "560076" },
+        { locality: "C.V. Raman Nagar", city: "Bengaluru", state: "Karnataka", pincode: "560093" },
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
+        // MUMBAI, MAHARASHTRA
+        { locality: "Andheri West", city: "Mumbai", state: "Maharashtra", pincode: "400053" },
+        { locality: "Bandra West", city: "Mumbai", state: "Maharashtra", pincode: "400050" },
+        { locality: "Worli", city: "Mumbai", state: "Maharashtra", pincode: "400018" },
+        { locality: "Juhu", city: "Mumbai", state: "Maharashtra", pincode: "400049" },
+        { locality: "Powai", city: "Mumbai", state: "Maharashtra", pincode: "400076" },
+        { locality: "Borivali West", city: "Mumbai", state: "Maharashtra", pincode: "400092" },
+        { locality: "Ghatkopar East", city: "Mumbai", state: "Maharashtra", pincode: "400077" },
+        { locality: "Colaba", city: "Mumbai", state: "Maharashtra", pincode: "400005" },
+        { locality: "Dadar West", city: "Mumbai", state: "Maharashtra", pincode: "400028" },
+        { locality: "Kandivali East", city: "Mumbai", state: "Maharashtra", pincode: "400101" },
+        { locality: "Lower Parel", city: "Mumbai", state: "Maharashtra", pincode: "400013" },
+        { locality: "Malad West", city: "Mumbai", state: "Maharashtra", pincode: "400064" },
+        { locality: "Vile Parle East", city: "Mumbai", state: "Maharashtra", pincode: "400057" },
+        { locality: "Chembur", city: "Mumbai", state: "Maharashtra", pincode: "400071" },
+        { locality: "Mulund West", city: "Mumbai", state: "Maharashtra", pincode: "400080" },
+
+        // DELHI (NCR)
+        { locality: "Connaught Place", city: "New Delhi", state: "Delhi", pincode: "110001" },
+        { locality: "Saket", city: "New Delhi", state: "Delhi", pincode: "110017" },
+        { locality: "Greater Kailash", city: "New Delhi", state: "Delhi", pincode: "110048" },
+        { locality: "Dwarka Sector 6", city: "New Delhi", state: "Delhi", pincode: "110075" },
+        { locality: "Rohini Sector 7", city: "New Delhi", state: "Delhi", pincode: "110085" },
+        { locality: "Lajpat Nagar", city: "New Delhi", state: "Delhi", pincode: "110024" },
+        { locality: "Karol Bagh", city: "New Delhi", state: "Delhi", pincode: "110005" },
+        { locality: "Vasant Kunj", city: "New Delhi", state: "Delhi", pincode: "110070" },
+        { locality: "Janakpuri", city: "New Delhi", state: "Delhi", pincode: "110058" },
+        { locality: "Hauz Khas", city: "New Delhi", state: "Delhi", pincode: "110016" },
+
+        // HYDERABAD, TELANGANA
+        { locality: "Gachibowli", city: "Hyderabad", state: "Telangana", pincode: "500032" },
+        { locality: "Madhapur", city: "Hyderabad", state: "Telangana", pincode: "500081" },
+        { locality: "Banjara Hills", city: "Hyderabad", state: "Telangana", pincode: "500034" },
+        { locality: "Jubilee Hills", city: "Hyderabad", state: "Telangana", pincode: "500033" },
+        { locality: "Kukatpally", city: "Hyderabad", state: "Telangana", pincode: "500072" },
+        { locality: "Secunderabad", city: "Hyderabad", state: "Telangana", pincode: "500003" },
+        { locality: "Ameerpet", city: "Hyderabad", state: "Telangana", pincode: "500016" },
+        { locality: "Uppal", city: "Hyderabad", state: "Telangana", pincode: "500039" },
+        { locality: "Manikonda", city: "Hyderabad", state: "Telangana", pincode: "500089" },
+        { locality: "Begumpet", city: "Hyderabad", state: "Telangana", pincode: "500016" },
+
+        // CHENNAI, TAMIL NADU
+        { locality: "Adyar", city: "Chennai", state: "Tamil Nadu", pincode: "600020" },
+        { locality: "Velachery", city: "Chennai", state: "Tamil Nadu", pincode: "600042" },
+        { locality: "Anna Nagar", city: "Chennai", state: "Tamil Nadu", pincode: "600040" },
+        { locality: "T Nagar", city: "Chennai", state: "Tamil Nadu", pincode: "600017" },
+        { locality: "Mylapore", city: "Chennai", state: "Tamil Nadu", pincode: "600004" },
+        { locality: "Nungambakkam", city: "Chennai", state: "Tamil Nadu", pincode: "600034" },
+        { locality: "Guindy", city: "Chennai", state: "Tamil Nadu", pincode: "600032" },
+        { locality: "Thoraipakkam", city: "Chennai", state: "Tamil Nadu", pincode: "600097" },
+        { locality: "Sholinganallur", city: "Chennai", state: "Tamil Nadu", pincode: "600119" },
+        { locality: "Besant Nagar", city: "Chennai", state: "Tamil Nadu", pincode: "600090" },
+
+        // PUNE, MAHARASHTRA
+        { locality: "Kothrud", city: "Pune", state: "Maharashtra", pincode: "411038" },
+        { locality: "Viman Nagar", city: "Pune", state: "Maharashtra", pincode: "411014" },
+        { locality: "Hinjewadi", city: "Pune", state: "Maharashtra", pincode: "411057" },
+        { locality: "Hadapsar", city: "Pune", state: "Maharashtra", pincode: "411028" },
+        { locality: "Baner", city: "Pune", state: "Maharashtra", pincode: "411045" },
+        { locality: "Wakad", city: "Pune", state: "Maharashtra", pincode: "411057" },
+        { locality: "Kalyani Nagar", city: "Pune", state: "Maharashtra", pincode: "411006" },
+        { locality: "Magarpatta", city: "Pune", state: "Maharashtra", pincode: "411013" },
+        { locality: "Aundh", city: "Pune", state: "Maharashtra", pincode: "411007" },
+        { locality: "Pimpri", city: "Pune", state: "Maharashtra", pincode: "411018" },
+
+        // KOLKATA, WEST BENGAL
+        { locality: "Salt Lake Sector 1", city: "Kolkata", state: "West Bengal", pincode: "700064" },
+        { locality: "New Town", city: "Kolkata", state: "West Bengal", pincode: "700156" },
+        { locality: "Ballygunge", city: "Kolkata", state: "West Bengal", pincode: "700019" },
+        { locality: "Park Street", city: "Kolkata", state: "West Bengal", pincode: "700016" },
+        { locality: "Behala", city: "Kolkata", state: "West Bengal", pincode: "700034" },
+        { locality: "Dum Dum", city: "Kolkata", state: "West Bengal", pincode: "700028" },
+        { locality: "Garia", city: "Kolkata", state: "West Bengal", pincode: "700084" },
+        { locality: "Howrah", city: "Kolkata", state: "West Bengal", pincode: "711101" },
+        { locality: "Tollygunge", city: "Kolkata", state: "West Bengal", pincode: "700033" },
+        { locality: "Alipore", city: "Kolkata", state: "West Bengal", pincode: "700027" },
+
+        // OTHER MAJOR CITIES
+        { locality: "C Scheme", city: "Jaipur", state: "Rajasthan", pincode: "302001" },
+        { locality: "Malviya Nagar", city: "Jaipur", state: "Rajasthan", pincode: "302017" },
+        { locality: "Gomti Nagar", city: "Lucknow", state: "Uttar Pradesh", pincode: "226010" },
+        { locality: "Hazratganj", city: "Lucknow", state: "Uttar Pradesh", pincode: "226001" },
+        { locality: "Ellisbridge", city: "Ahmedabad", state: "Gujarat", pincode: "380006" },
+        { locality: "Satellite", city: "Ahmedabad", state: "Gujarat", pincode: "380015" },
+        { locality: "Panampilly Nagar", city: "Kochi", state: "Kerala", pincode: "682036" },
+        { locality: "Marine Drive", city: "Kochi", state: "Kerala", pincode: "682031" },
+        { locality: "Sector 17", city: "Chandigarh", state: "Chandigarh", pincode: "160017" },
+        { locality: "Banjari Layout", city: "Raipur", state: "Chhattisgarh", pincode: "492001" }
+    ];
+
+    function toggleDropdown() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
             }
         }
     }
-}</script>
+    function showOptions() {
+        const input = document.getElementById('Pickup_Location');
+        const query = input.value.toLowerCase();
+        const ul = document.getElementById("placelist");
+
+        ul.innerHTML = "";
+
+        if (query.length < 1) {
+            ul.style.display = "none";
+            return;
+        }
+
+
+        let count = 0;
+        for (let i = 0; i < indianLocations.length; i++) {
+            const location = indianLocations[i].locality + " , " + indianLocations[i].city + " , " + indianLocations[i].state;
+
+            if (location.toLowerCase().includes(query)) {
+                const li = document.createElement("li");
+                li.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${location}`;
+                li.className = "place-item";
+
+
+                li.onclick = function () {
+                    input.value = location;
+                    ul.style.display = "none";
+                };
+
+                ul.appendChild(li);
+                count++;
+            }
+
+            // Limit results so the box doesn't get too long
+            if (count > 5) break;
+        }
+
+        // 4. Show the list only if matches were found
+        ul.style.display = count > 0 ? "block" : "none";
+    }
+
+    // <input type="text" name="Drop_Location" id="Drop_Location" placeholder="Enter Drop Location"
+    //                         oninput="showOptions_2()"  class="main-input" required>
+    //                         <ul id="placelist2"></ul>
+
+    function showOptions_2() {
+        const input = document.getElementById('Drop_Location');
+        const query = input.value.toLowerCase();
+        const ul = document.getElementById("placelist2");
+
+        ul.innerHTML = "";
+
+        if (query.length < 1) {
+            ul.style.display = "none";
+            return;
+        }
+
+
+        let count = 0;
+        for (let i = 0; i < indianLocations.length; i++) {
+            const location = indianLocations[i].locality + " , " + indianLocations[i].city + " , " + indianLocations[i].state;
+
+            if (location.toLowerCase().includes(query)) {
+                const li = document.createElement("li");
+                li.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${location}`;
+                li.className = "place-item";
+
+
+                li.onclick = function () {
+                    input.value = location;
+                    ul.style.display = "none";
+                };
+
+                ul.appendChild(li);
+                count++;
+            }
+
+            // Limit results so the box doesn't get too long
+            if (count > 5) break;
+        }
+
+        // 4. Show the list only if matches were found
+        ul.style.display = count > 0 ? "block" : "none";
+    }
+
+    function GotoTripshowpage(event)
+    {
+        event.preventDefault();
+        if(document.getElementById('Pickup_Location').value && document.getElementById('Drop_Location').value)
+    {
+        sessionStorage.setItem('StartLoc', document.getElementById("Pickup_Location").value);
+        sessionStorage.setItem('EndLoc', document.getElementById("Drop_Location").value);
+        location.href='Active2History.html'
+    }
+    else
+    {
+        sessionStorage.clear()
+        alert('Please select Your pickup points')
+        return false;
+    }
+    }
+</script>
+
 </html>
