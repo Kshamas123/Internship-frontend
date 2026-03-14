@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="PersonalDetails.css">
+</head>
+<body>
+   <header class="Login-header">
+        <h1>Axis</h1>
+    </header>
+     <main class="SignUp-Container">
+        <div class="SignupBox">
+            <h1><i class="fa-solid fa-user"></i> Personal Details</h1>
+            
+            <form>
+                <div class="input-group">
+                    <label for="user_name">Name:</label>
+                    <input type="text" name="user_name" id="user_name" placeholder="Enter Your Name" class="main-input"  autocomplete="off" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="user_email">Email:</label>
+                    <input type="email" name="user_email" id="user_email" placeholder="Enter Your Email" class="main-input"  autocomplete="off" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="user_no">Phone Number:</label>
+                    <input type="text" name="user_no" id="user_no" placeholder="Enter Your Number" class="main-input"  autocomplete="off" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="user_dob">Email:</label>
+                    <input type="date" name="user_dob" id="user_dob" placeholder="Enter Your DOB" class="main-input"  autocomplete="off" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="user_password">Password:</label>
+                    <input type="password" name="user_password" id="user_password" placeholder="Enter Your Password" class="main-input"  autocomplete="off" required>
+                </div>
+
+                <button type="submit" class="btn-secondary full-width" onclick="Gotopage(event)">Continue</button>
+            </form>
+            </div>
+    </main>
+</body>
+<script>
+    function Gotopage(event){
+        event.preventDefault()
+        const user_name=document.getElementById('user_name').value
+        const user_email=document.getElementById('user_email').value
+        const user_no=document.getElementById('user_no').value
+        const user_password=document.getElementById('user_password').value
+         const user_dob=document.getElementById('user_dob').value
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const phonePattern = /^\+?[0-9]{10,15}$/;
+        const normalizedphone = user_no.replace(/[^0-9+a-zA-Z@._-]/g, ''); 
+        if(user_email.length<=0 || user_name.length<=0 || user_no<=0 || user_password<=0 || !emailPattern.test(user_email) || !phonePattern.test(normalizedphone))
+    {
+        alert("Enter all the details")
+        return false;
+    }
+    else
+    {
+        sessionStorage.setItem('personaldetails','Filled')
+        location.href='DriverSignupuser.html'
+    }
+    }
+</script>
+</html>

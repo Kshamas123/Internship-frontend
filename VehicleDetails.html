@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="VehicleDetails.css">
+</head>
+<body>
+   <header class="Login-header">
+        <h1>Axis</h1>
+    </header>
+    <main class="SignUp-Container">
+    <div class="SignupBox">
+        <h1><i class="fa-solid fa-car"></i> Vehicle Details</h1>
+        
+        <form id="vehicle-form">
+            <div id="vehicle-inputs">
+                <div class="input-group">
+                    <label for="vehicle_no">Vehicle Registration Number:</label>
+                    <input type="text" id="vehicle_no" placeholder="e.g. KA-01-MJ-1234" class="main-input" autocomplete="off">
+                </div>
+
+                <div class="input-group">
+                    <label for="vehicle_type">Vehicle Type:</label>
+                    <select id="vehicle_type" class="main-input">
+                        <option value="">Select Type</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="SUV">SUV</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="Auto">Auto Rickshaw</option>
+                        <option value="Bike">Bike</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="button" class="btn-add-more" onclick="addVehicleToList()">
+                <i class="fa-solid fa-plus"></i> Add Vehicle
+            </button>
+
+            <div id="added-vehicles-display" class="vehicle-display-area">
+                </div>
+
+            <button type="submit" class="btn-secondary full-width" onclick="FinishVehicleDetails(event)">Continue</button>
+        </form>
+    </div>
+</main>
+</body>
+<script>let vehicles = [];
+
+function addVehicleToList() {
+    const vNo = document.getElementById('vehicle_no').value.trim();
+    const vType = document.getElementById('vehicle_type').value;
+
+    if (vNo === "" || vType === "") {
+        alert("Please enter both Vehicle Number and Type");
+        return;
+    }
+
+  
+    const vehicleObj = { number: vNo, type: vType };
+    vehicles.push(vehicleObj);
+
+    const displayArea = document.getElementById('added-vehicles-display');
+    const card = document.createElement('div');
+    card.className = 'vehicle-item-card';
+    card.innerHTML = `
+        <div>
+            <strong>${vType}</strong><br>
+            <small>${vNo}</small>
+        </div>
+        <i class="fa-solid fa-circle-check"></i>
+    `;
+    displayArea.appendChild(card);
+
+    // Clear inputs for next entry
+    document.getElementById('vehicle_no').value = "";
+    document.getElementById('vehicle_type').value = "";
+}
+
+function FinishVehicleDetails(event) {
+    event.preventDefault();
+
+    // If they have typed something but didn't click "Add", let's catch it
+    const currentNo = document.getElementById('vehicle_no').value;
+    
+    if (vehicles.length === 0 && currentNo === "") {
+        alert("Please add at least one vehicle.");
+        return;
+    }
+
+    // Save status and redirect
+    sessionStorage.setItem('vehicledetails', 'Filled');
+    location.href = 'DriverSignupuser.html';
+}</script>
+</html>

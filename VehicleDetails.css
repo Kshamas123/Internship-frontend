@@ -1,0 +1,137 @@
+.SignUp-Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+.SignupBox {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.SignupBox h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* --- Form Elements --- */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--axis-gray-medium);
+}
+
+.main-input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box; /* Crucial for padding */
+    transition: border-color 0.2s;
+}
+
+.main-input:focus {
+    outline: none;
+    border-color: var(--axis-black);
+}
+
+/* --- Dynamic Vehicle List Styling --- */
+.btn-add-more {
+    background: none;
+    border: 2px dashed #ccc;
+    color: var(--axis-black);
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s;
+}
+
+.btn-add-more:hover {
+    border-color: var(--axis-black);
+    background-color: var(--axis-gray-light);
+}
+
+.vehicle-display-area {
+    margin-bottom: 20px;
+    max-height: 200px;
+    overflow-y: auto; /* Scroll if many vehicles are added */
+}
+
+.vehicle-item-card {
+    background: var(--axis-gray-light);
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border: 1px solid #e0e0e0;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.vehicle-item-card strong {
+    font-size: 16px;
+    display: block;
+}
+
+.vehicle-item-card small {
+    color: var(--axis-gray-medium);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.vehicle-item-card i {
+    color: var(--axis-green);
+    font-size: 18px;
+}
+
+/* --- Continue Button --- */
+.btn-secondary.full-width {
+    width: 100%;
+    background-color: var(--axis-black);
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    margin-top: 10px;
+}
+
+.btn-secondary.full-width:hover {
+    opacity: 0.85;
+}
+

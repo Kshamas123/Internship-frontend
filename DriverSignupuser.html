@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="GlobalStyle.css">
     <link rel="stylesheet" href="DriverSignupuser.css">
 </head>
@@ -19,19 +20,25 @@
 
         <div class="StepsGrid">
             <div class="StepCard clickable" onclick="location.href='PersonalDetails.html'">
-                <div class="StepInfo">
-                    <i class="fa-solid fa-user-check"></i>
-                    <h2>Personal Details</h2>
-                </div>
-                <i class="fa-solid fa-chevron-right"></i>
-            </div>
+    <div class="StepInfo">
+        <i class="fa-solid fa-user"></i>
+        <h2>Personal Details</h2>
+    </div>
+    <div class="Status-Icons">
+        <i id="personal-check" class="fa-solid fa-circle-check" style="display: none; color: #28a745; margin-right: 10px;"></i>
+        <i class="fa-solid fa-chevron-right" id="p1"></i>
+    </div>
+</div>
 
-            <div class="StepCard clickable">
+            <div class="StepCard clickable"  onclick="location.href='VehicleDetails.html'">
                 <div class="StepInfo">
                     <i class="fa-solid fa-car"></i>
                     <h2>Vehicle Details</h2>
                 </div>
-                <i class="fa-solid fa-chevron-right"></i>
+                <div class="Status-Icons">
+        <i id="vehicle-check" class="fa-solid fa-circle-check" style="display: none; color: #28a745; margin-right: 10px;"></i>
+        <i class="fa-solid fa-chevron-right" id="p2"></i>
+    </div>
             </div>
 
             <div class="StepCard clickable">
@@ -39,7 +46,7 @@
                     <i class="fa-solid fa-file-shield"></i>
                     <h2>Submit Documents</h2>
                 </div>
-                <i class="fa-solid fa-chevron-right"></i>
+                <i class="fa-solid fa-chevron-right" id="p3"></i>
             </div>
         </div>
 
@@ -79,5 +86,43 @@
     else
         location.href='DriverLandpage.html'
     }
+    window.onload = function() {
+    // Check if the session storage flag exists
+    const personalStatus = sessionStorage.getItem('personaldetails');
+    const vehicleStatus = sessionStorage.getItem('vehicledetails');
+    
+    if (personalStatus === 'Filled') {
+        const checkIcon = document.getElementById('personal-check');
+        const chevronIcon = document.getElementById('p1')
+        
+        if (checkIcon) {
+
+            checkIcon.style.display = "inline-block";
+            
+            if (chevronIcon) {
+                chevronIcon.style.display = "none";
+            }
+            
+            // Optional: Change the card border or background to indicate completion
+            // document.querySelector('p1').style.borderLeft = "5px solid #28a745";
+        }
+    }
+    if (vehicleStatus === 'Filled') {
+        const checkIcon = document.getElementById('vehicle-check');
+        const chevronIcon = document.getElementById('p2')
+        
+        if (checkIcon) {
+
+            checkIcon.style.display = "inline-block";
+            
+            if (chevronIcon) {
+                chevronIcon.style.display = "none";
+            }
+            
+            // Optional: Change the card border or background to indicate completion
+            // document.querySelector('.StepCard').style.borderLeft = "5px solid #28a745";
+        }
+    }
+}
 </script>
 </html>
