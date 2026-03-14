@@ -18,28 +18,28 @@
         <div class="SignupBox">
             <h1>SignUp</h1>
             
-            <form action="/submit-signup" method="POST">
+            <form>
                 <div class="input-group">
                     <label for="user_name">Name:</label>
-                    <input type="text" name="user_name" id="user_name" placeholder="Enter Your Name" class="main-input" required>
+                    <input type="text" name="user_name" id="user_name" placeholder="Enter Your Name" class="main-input"  autocomplete="off" required>
                 </div>
 
                 <div class="input-group">
                     <label for="user_email">Email:</label>
-                    <input type="email" name="user_email" id="user_email" placeholder="Enter Your Email" class="main-input" required>
+                    <input type="email" name="user_email" id="user_email" placeholder="Enter Your Email" class="main-input"  autocomplete="off" required>
                 </div>
 
                 <div class="input-group">
                     <label for="user_no">Phone Number:</label>
-                    <input type="text" name="user_no" id="user_no" placeholder="Enter Your Number" class="main-input" required>
+                    <input type="text" name="user_no" id="user_no" placeholder="Enter Your Number" class="main-input"  autocomplete="off" required>
                 </div>
 
                 <div class="input-group">
                     <label for="user_password">Password:</label>
-                    <input type="password" name="user_password" id="user_password" placeholder="Enter Your Password" class="main-input" required>
+                    <input type="password" name="user_password" id="user_password" placeholder="Enter Your Password" class="main-input"  autocomplete="off" required>
                 </div>
 
-                <button type="submit" class="btn-secondary full-width">Continue</button>
+                <button type="submit" class="btn-secondary full-width" onclick="GotoNextpage(event)">Continue</button>
             </form>
             </div>
     </main>
@@ -73,4 +73,24 @@
     </div>
 </section>
 </body>
+<script>
+    function GotoNextpage(event)
+    {
+        event.preventDefault()
+        const user_name=document.getElementById('user_name').value
+        const user_email=document.getElementById('user_email').value
+        const user_no=document.getElementById('user_no').value
+        const user_password=document.getElementById('user_password').value
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const phonePattern = /^\+?[0-9]{10,15}$/;
+        const normalizedphone = user_no.replace(/[^0-9+a-zA-Z@._-]/g, ''); 
+        if(user_email.length<=0 || user_name.length<=0 || user_no<=0 || user_password<=0 || !emailPattern.test(emailPattern) || !phonePattern.test(normalizedphone))
+    {
+        alert("Enter all the details")
+        return false;
+    }
+    else
+        location.href='RideRequest.html'
+    }
+</script>
 </html>
