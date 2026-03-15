@@ -41,15 +41,17 @@
     </div>
             </div>
 
-            <div class="StepCard clickable">
+            <div class="StepCard clickable" onclick="location.href='DocumentDetails.html'">
                 <div class="StepInfo">
                     <i class="fa-solid fa-file-shield"></i>
                     <h2>Submit Documents</h2>
                 </div>
-                <i class="fa-solid fa-chevron-right" id="p3"></i>
+                <div class="Status-Icons">
+        <i id="document-check" class="fa-solid fa-circle-check" style="display: none; color: #28a745; margin-right: 10px;"></i>
+        <i class="fa-solid fa-chevron-right" id="p3"></i>
+    </div>
             </div>
         </div>
-
         <button class="btn-secondary full-width" onclick="GotoDashboard()">Continue to Dashboard</button>
     </section>
 
@@ -90,7 +92,8 @@
     // Check if the session storage flag exists
     const personalStatus = sessionStorage.getItem('personaldetails');
     const vehicleStatus = sessionStorage.getItem('vehicledetails');
-    
+    const documentStatus = sessionStorage.getItem('documentdetails');
+
     if (personalStatus === 'Filled') {
         const checkIcon = document.getElementById('personal-check');
         const chevronIcon = document.getElementById('p1')
@@ -110,6 +113,22 @@
     if (vehicleStatus === 'Filled') {
         const checkIcon = document.getElementById('vehicle-check');
         const chevronIcon = document.getElementById('p2')
+        
+        if (checkIcon) {
+
+            checkIcon.style.display = "inline-block";
+            
+            if (chevronIcon) {
+                chevronIcon.style.display = "none";
+            }
+            
+            // Optional: Change the card border or background to indicate completion
+            // document.querySelector('.StepCard').style.borderLeft = "5px solid #28a745";
+        }
+    }
+    if (documentStatus === 'Filled') {
+        const checkIcon = document.getElementById('document-check');
+        const chevronIcon = document.getElementById('p3')
         
         if (checkIcon) {
 

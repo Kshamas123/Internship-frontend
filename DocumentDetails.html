@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="DocumentDetails.css">
+</head>
+<body>
+   <header class="Login-header">
+        <h1>Axis</h1>
+    </header>
+    <main class="SignUp-Container">
+        <div class="SignupBox">
+            <h1><i class="fa-solid fa-file-shield"></i> Document Details</h1>
+             <form>
+                <div class="input-group">
+                    <label for="Adhar_Number">Adhar Number:</label>
+                    <input type="text" name="Adhar_Number" id="Adhar_Number" placeholder="Enter Your Adhar Number" class="main-input"  autocomplete="off" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="Adhar_file">Upload Document:</label>
+                    <input type="file" name="Adhar_file" id="Adhar_file" class="main-input"  autocomplete="off" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="License_Number">License Number:</label>
+                    <input type="text" name="License_Number" id="License_Number" placeholder="Enter YourLicense Number" class="main-input"  autocomplete="off" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="License_file">Upload Document:</label>
+                    <input type="file" name="License_file" id="License_file"  class="main-input"  autocomplete="off" required>
+                </div>
+
+
+                <button type="submit" class="btn-secondary full-width" onclick="Gotopage(event)">Continue</button>
+            </form>
+            </div>
+    </main>
+</body>
+<script>
+    function Gotopage(event){
+        event.preventDefault()
+        const Adhar_Number=document.getElementById('Adhar_Number').value
+        const License_Number=document.getElementById('License_Number').value
+        const License_file=document.getElementById('License_file')
+        const Adhar_file=document.getElementById('Adhar_file')
+        if(Adhar_Number.length<=0 || License_Number.length<=0  || License_file.files.length == 0 || Adhar_file.files.length ==0 )
+    {
+        alert("Enter all the details")
+        return false;
+    }
+    else
+    {
+        sessionStorage.setItem('documentdetails','Filled')
+        location.href='DriverSignupuser.html'
+    }
+    }
+</script>
+</html>
+        
