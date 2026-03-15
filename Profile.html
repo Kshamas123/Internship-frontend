@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="Profile.css">
+</head>
+
+<body>
+    <header>
+        <Nav class="Normal-header">
+            <h1>Axis</h1>
+            <ul class="List-elements">
+                <li class="Back-btn right">
+                    <button type="submit" class="btn-secondary full-width" onclick="location.href='RideRequest.html'">Back</button>
+                </li>
+            </ul>
+        </Nav>
+    </header>
+    <main class="Profile-container">
+    <div class="Profile-Card">
+        <div class="Profile-Header">
+            <div class="Avatar-Circle">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <h1>Hello, Reema</h1>
+            <p>Member since March 2026</p>
+        </div>
+
+        <div class="Profile-Info-Section">
+            <div class="info-row">
+                <i class="fa-solid fa-id-card"></i>
+                <div class="info-text">
+                    <span>Full Name</span>
+                    <strong class="Nonedit" id="username">Reema S</strong>
+                    <input type="text" id="user_name" class="edit">
+                </div>
+            </div>
+
+            <div class="info-row">
+                <i class="fa-solid fa-phone"></i>
+                <div class="info-text">
+                    <span>Mobile Number</span>
+                    <strong class="Nonedit" id="userphone">+91 912345569</strong>
+                    <input type="text" id="user_phone" class="edit">
+                </div>
+            </div>
+
+            <div class="info-row">
+                <i class="fa-solid fa-envelope"></i>
+                <div class="info-text">
+                    <span>Email Address</span>
+                    <strong class="Nonedit" id="useremail">Reema@gmail.com</strong>
+                    <input type="email" id="user_email" class="edit">
+                </div>
+            </div>
+        </div>
+
+        <button class="edit-profile-btn" id="Editbtn" onclick="Togglemode()">Edit Profile</button>
+        <button class="edit" id="Savebtn" onclick="editmode()">Save</button>
+
+    </div>
+</main>
+</body>
+<script>
+    
+
+    function Togglemode()
+    {
+        const username=document.getElementById('username').innerText;
+        const userphone=document.getElementById('userphone').innerText;
+        const useremail=document.getElementById('useremail').innerHTML;
+        
+        document.getElementById('username').classList.toggle('edit')
+        document.getElementById('userphone').classList.toggle('edit')
+        document.getElementById('useremail').classList.toggle('edit')
+
+
+       document.getElementById('user_name').value = username;
+document.getElementById('user_phone').value = userphone;
+document.getElementById('user_email').value = useremail;
+
+        document.getElementById('user_name').classList.toggle('edit')
+        document.getElementById('user_phone').classList.toggle('edit')
+        document.getElementById('user_email').classList.toggle('edit')
+
+        document.getElementById('user_name').classList.toggle('main-input')
+        document.getElementById('user_phone').classList.toggle('main-input')
+        document.getElementById('user_email').classList.toggle('main-input')
+
+        document.getElementById('Editbtn').classList.toggle('edit-profile-btn')
+        document.getElementById('Editbtn').classList.toggle('edit')
+        document.getElementById('Savebtn').classList.toggle('edit')
+        document.getElementById('Savebtn').classList.toggle('edit-profile-btn')
+
+
+    }
+
+    
+    function editmode()
+    {
+        const username=document.getElementById('user_name').value
+        const userphone=document.getElementById('user_phone').value
+        const useremail=document.getElementById('user_email').value
+        
+        document.getElementById('user_name').classList.toggle('edit')
+        document.getElementById('user_phone').classList.toggle('edit')
+        document.getElementById('user_email').classList.toggle('edit')
+
+        document.getElementById('user_name').classList.toggle('main-input')
+        document.getElementById('user_phone').classList.toggle('main-input')
+        document.getElementById('user_email').classList.toggle('main-input')
+
+
+        document.getElementById('username').classList.toggle('edit')
+        document.getElementById('userphone').classList.toggle('edit')
+        document.getElementById('useremail').classList.toggle('edit')
+
+        document.getElementById('username').innerText=username
+        document.getElementById('userphone').innerText=userphone
+        document.getElementById('useremail').innerText=useremail
+
+        document.getElementById('Editbtn').classList.toggle('edit-profile-btn')
+        document.getElementById('Editbtn').classList.toggle('edit')
+        document.getElementById('Savebtn').classList.toggle('edit')
+        document.getElementById('Savebtn').classList.toggle('edit-profile-btn')
+
+       const firstName = username.split(' ')[0];
+    document.querySelector('.Profile-Header h1').innerText = "Hello, " + firstName;
+    }
+</script>
+</html>
