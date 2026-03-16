@@ -1,0 +1,102 @@
+.Checkout-container {
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Summary Card */
+.Summary-Card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.Fare-Header {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.Fare-Header span { color: #888; font-size: 14px; }
+.Fare-Header h2 { font-size: 32px; font-weight: 800; margin-top: 5px; }
+
+.fare-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Payment Methods */
+.section-label {
+    font-size: 14px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.Method-Item { cursor: pointer; display: block; margin-bottom: 12px; }
+.Method-Item input { display: none; }
+
+.Method-Box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.Method-Item input:checked + .Method-Box {
+    border-color: #276ef1;
+    background: #f0f4ff;
+}
+
+.Method-Box i { font-size: 20px; color: #555; }
+.Method-Item input:checked + .Method-Box i { color: #276ef1; }
+
+/* Confirm Button */
+.Confirm-Btn {
+    width: 100%;
+    padding: 18px;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Success Overlay */
+.Overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255,255,255,0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.Success-Content {
+    text-align: center;
+}
+
+.Success-Content i { font-size: 60px; color: #4caf50; margin-bottom: 20px; }
+.Success-Content h3 { font-size: 24px; margin-bottom: 10px; }
+.Success-Content button {
+    margin-top: 20px;
+    padding: 10px 25px;
+    border: 1px solid #000;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+}

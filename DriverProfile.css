@@ -1,0 +1,240 @@
+.section-title {
+    font-size: 12px;
+    color: var(--axis-blue);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 20px 0 10px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+/* Ensure inputs in edit mode don't break the layout */
+.main-input {
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 4px;
+}.Normal-header {
+    background-color: var(--axis-black); 
+    color: var(--axis-white);
+    padding: 20px 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 2px solid var(--axis-blue); 
+    gap: 50px;
+}
+.List-elements {
+    display: flex;
+    gap: 50px;
+    list-style-type: none;
+    margin-top: 15px; /* Adjusted to align better with 'Axis' */
+    width: 100%;      /* Allow the list to fill the header width */
+    align-items: center;
+}
+
+.Back-btn.right {
+    margin-left: auto; 
+    font-size: 24px;   /* Makes the icon a good size */
+    cursor: pointer;
+}
+/* Container must be relative so menu positions correctly */
+.Back-btn {
+    position: relative;
+    display: inline-block;
+}
+
+
+.btn-secondary {
+    width: 100%;
+    border: none;
+    padding: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.full-width {
+    background-color: var(--axis-white);
+    color: var(--axis-black);
+}
+
+.full-width:hover {
+    background-color: var(--axis-gray-light);
+}
+
+.Profile-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+.Profile-box{
+    font-size: 28px;
+    background-color: var(--axis-black);
+    color: var(--axis-white);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.Profile-details{
+    background-color: var(--axis-gray-light);
+    width: 100%;
+}
+.details{
+    font-size: 24px;
+    border: 2px solid var(--axis-gray-medium);
+    margin-top: 10px;
+}
+.Profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+   
+    min-height: calc(100vh - 100px);
+}
+
+.Profile-Card {
+    background: var(--axis-gray-light);
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    /* box-shadow: 0 15px 35px rgba(243, 197, 197, 0.1); */
+    overflow: hidden;
+}
+
+/* Header Section */
+.Profile-Header {
+    background-color: var(--axis-black);
+    color:var(--axis-white);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.Avatar-Circle {
+    width: 100px;
+    height: 100px;
+    background: var(--axis-white);
+    color: var(--axis-black);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    font-size: 40px;
+    border: 4px solid var(--axis-blue);
+}
+
+.Profile-Header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.Profile-Header p {
+    opacity: 0.7;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Info Section */
+.Profile-Info-Section {
+    padding: 30px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--axis-gray-light);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row i {
+    font-size: 20px;
+    color: var(--axis-gray-medium);
+    width: 30px;
+}
+
+.info-text span {
+    display: block;
+    font-size: 12px;
+    color: var(--axis-gray-medium);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-text strong {
+    font-size: 18px;
+    color: var(--axis-black);
+}
+
+/* Button */
+.edit-profile-btn {
+    width: calc(100% - 60px);
+    margin: 0 30px 30px;
+    padding: 15px;
+    border: 2px solid var(--axis-black);
+    background: transparent;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.edit-profile-btn:hover {
+    background: var(--axis-black);
+    color:var(--axis-white)
+}
+
+.edit{
+    display: none;
+}
+
+ .main-input {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--axis-gray-light);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.2s ease;
+}
+.add-vehicle-btn {
+    width: calc(100% - 60px);
+    margin: 10px 30px;
+    padding: 12px;
+    background: transparent;
+    border: 2px dashed var(--axis-gray-medium);
+    color: var(--axis-gray-medium);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.add-vehicle-btn:hover {
+    border-color: var(--axis-blue);
+    color: var(--axis-blue);
+    background: #f0f7ff;
+}
+
+.delete-mini-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 10px;
+}

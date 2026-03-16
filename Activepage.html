@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="ActivePage.css">
+    <link rel="stylesheet" href="TripHistory.css">
+</head>
+
+<body>
+    <header>
+    <Nav class="Normal-header">
+        <h1>Axis</h1>
+        <ul class="List-elements">
+            <li><a href="RideRequest.html" class="Link-element">Ride Now</a></li>
+            <li><a href="TripHistory.html" class="Link-element active">My Rides</a></li>
+             <li class="user-profile right">
+    <i class="fa-solid fa-circle-user dropbtn" onclick="toggleDropdown()" style="font-size:2.5rem;"></i>
+    
+    <div id="myDropdown" class="dropdown-content">
+        <div class="user-info-header">
+            <strong>Kshama</strong>
+        </div>
+        <hr>
+        <a href="Profile.html"><i class="fa-solid fa-user"></i> My Profile</a>
+        <a href="Settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+      <a href="index.html" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+</li>
+        </ul>
+    </Nav>
+    </header>
+  
+  <div class="container">
+    <div class="switch">
+        <input id="switch-y" name="tripple" type="radio" value="Y" class="switch-input" />
+        <label for="switch-y" class="switch-label" onclick="GoToRequestHistory()">Submitted</label>
+
+        <input id="switch-i" name="tripple" type="radio" value="I" class="switch-input" checked/>
+        <label for="switch-i" class="switch-label" onclick="GoToActiveHistory()">In Progress</label>
+
+        <input id="switch-n" name="tripple" type="radio" value="N" class="switch-input" />
+        <label for="switch-n" class="switch-label" onclick="GoToCompletedHistory()">Completed</label>
+
+        <span class="switch-selector"></span>
+    </div>
+</div>
+<div class="TripsC">
+    <div class="Top-section">
+        <div class="Date_vehicle">
+            <p class="trip-date">17/08/21, 8:00 PM</p>
+            <p class="vehicle-type">Toyota Innova</p>
+        </div>
+        <div class="Price">₹450.00</div>
+    </div>
+
+    <div class="Route-container">
+        <div class="route-visual">
+            <div class="dot circle"></div>
+            <div class="line"></div>
+            <div class="dot square"></div>
+        </div>
+        <div class="Place-history">
+            <p class="address">Nandini Layout, Bengaluru, Karnataka</p>
+            <p class="address">Kempegowda Int'l Airport Rd, Bengaluru</p>
+        </div>
+    </div>
+
+    <div class="Drivername_Ratings">
+        <div class="driver-info">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="driver" class="driver-thumb">
+            <p>Your trip with <strong>Anilkumar.N</strong></p>
+        </div>
+        <button class="btn-secondary full-width" onclick="location.href='Payment.html'">Pay now</button>
+    </div>
+</div>
+
+</body>
+<script>
+    function GoToRequestHistory(){
+        location.href='RequestHistory.html'
+    }
+    function GoToActiveHistory(){
+        location.href='ActiveTripHistory.html'
+    }
+    function GoToCompletedHistory(){
+        location.href='CompletedTripHistory.html'
+    }
+    function toggleDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+</script>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="DriverDashboard.css">
+</head>
+
+<body>
+    <header>
+        <Nav class="Normal-header">
+            <h1>Axis</h1>
+            <ul class="List-elements">
+                <li><a href="Trips.html" class="Link-element active">My Trips</a></li>
+                <li><a href="Performance.html" class="Link-element">My Stats</a></li>
+                <li class="user-profile right">
+                    <i class="fa-solid fa-circle-user dropbtn" onclick="toggleDropdown()" style="font-size:2.5rem;"></i>
+
+                    <div id="myDropdown" class="dropdown-content">
+                        <div class="user-info-header">
+                            <strong>Kavin</strong>
+                        </div>
+                        <hr>
+                        <a href="DriverProfile.html"><i class="fa-solid fa-user"></i> My Profile</a>
+                        <a href="Settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+                        <a href="index.html" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i>
+                            Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </Nav>
+    </header>
+     <div class="container">
+    <div class="switch">
+        <input id="switch-y" name="tripple" type="radio" value="Y" class="switch-input" checked/>
+        <label for="switch-y" class="switch-label" onclick="GoToRequests()">Requests</label>
+
+
+        <input id="switch-n" name="tripple" type="radio" value="N" class="switch-input" />
+        <label for="switch-n" class="switch-label" onclick="GoToAccepted()">Accepted</label>
+
+        <span class="switch-selector"></span>
+    </div>
+</div>
+<div class="Parent-box">
+<div class="Trip-Request-Card">
+    <div class="Card-Header">
+        <span class="Price-Tag">₹350.00</span>
+        <span class="Time-Est">8 mins away</span>
+    </div>
+
+    <div class="User-Info">
+        <div class="User-Avatar">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="User-Text">
+            <strong>Requested by: Sneha Rao</strong>
+            <div class="Rating"><i class="fa-solid fa-star"></i> 4.9</div>
+        </div>
+    </div>
+
+    <div class="Route-Container">
+        <div class="Route-Icons">
+        <div class="Place-history">
+            <p class="startaddress"></p>
+            <p class="endaddress"></p>
+        </div>
+    </div>
+        <div class="Route-Details">
+            <div class="Location-Item">
+                <span>PICKUP</span>
+                <p>City Centre Mall, K.S. Rao Road</p>
+            </div>
+            <div class="Location-Item">
+                <span>DROP-OFF</span>
+                <p>Mangalore International Airport</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="Card-Actions">
+         <button class="btn-decline" onclick="Decline(this)">Decline</button>
+        <button class="btn-accept">Accept Request</button>
+    </div>
+
+    
+</div>
+
+<div class="Trip-Request-Card">
+    <div class="Card-Header">
+        <span class="Price-Tag">₹250.00</span>
+        <span class="Time-Est">10 mins away</span>
+    </div>
+
+    <div class="User-Info">
+        <div class="User-Avatar">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="User-Text">
+            <strong>Requested by: Kajol</strong>
+            <div class="Rating"><i class="fa-solid fa-star"></i> 4.0</div>
+        </div>
+    </div>
+
+    <div class="Route-Container" > 
+        <div class="Route-Icons">
+        <div class="Place-history">
+            <p class="startaddress"></p>
+            <p class="endaddress"></p>
+        </div>
+    </div>
+        <div class="Route-Details">
+            <div class="Location-Item">
+                <span>PICKUP</span>
+                <p>HSR Layout,Bengaluru</p>
+            </div>
+            <div class="Location-Item">
+                <span>DROP-OFF</span>
+                <p>Bengaluru International Airport</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="Card-Actions">
+        <button class="btn-decline" onclick="Decline(this)">Decline</button>
+        <button class="btn-accept">Accept Request</button>
+    </div>
+
+    
+</div>
+</div>
+</body>
+<script>
+     function toggleDropdown() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    function GoToRequests()
+    {
+        location.href='DriverDashboard.html'
+    }
+    function GoToAccepted()
+    {
+        location.href='Accepted.html'
+    }
+function Decline(buttonElement) {
+
+    const card = buttonElement.closest('.Trip-Request-Card');
+    card.classList.toggle('Tshow')
+}
+ window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
+</html>

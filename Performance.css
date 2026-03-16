@@ -1,0 +1,148 @@
+:root {
+    --axis-blue: #276ef1;
+    --bg-gray: #f8f9fa;
+    --bar-inactive: #e0e6ed;
+}
+
+.Performance-container {
+    padding: 30px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.Stats-Header h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.Stats-Header p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.Charts-Grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.Chart-Card {
+    background: white;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.Chart-Card h3 {
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+/* --- Weekly Earning Chart --- */
+.Total-Amount {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+
+/* Ensure the wrapper is tall enough to show the bar */
+
+
+
+/* Container for the bars */
+.Bar-Chart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* This forces bars to stay at the bottom */
+    height: 180px;         /* The bars will be % of this 180px */
+    padding: 10px 5px;
+    background: #fdfdfd;   /* Light tint to see the chart area */
+    border-radius: 12px;
+    border-bottom: 2px solid #eee;
+}
+
+.Bar-Wrapper {
+    height: 100%;          /* Wrapper takes full chart height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30px;
+}
+
+.Bar {
+    width: 22px;
+    background-color: #d1d8e0; /* Solid gray */
+    border-radius: 4px 4px 0 0; /* Rounded top only */
+    transition: all 0.3s ease;
+}
+
+.Bar.active {
+    background-color: #276ef1 !important; /* Your Axis Blue */
+    box-shadow: 0 4px 10px rgba(39, 110, 241, 0.3);
+}
+
+.Bar-Wrapper span {
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #888;
+}
+
+/* --- Rating Chart --- */
+.Rating-Score {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.Big-Number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    display: block;
+    line-height: 1;
+}
+
+.Stars {
+    color: #ffc107;
+    margin-top: 10px;
+}
+
+.Rating-Breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.Rating-Row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.Rating-Row span {
+    font-size: 0.8rem;
+    width: 30px;
+    font-weight: 600;
+}
+
+.Progress-BG {
+    flex: 1;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.Progress-Fill {
+    height: 100%;
+    background: #00c853; /* Success Green */
+    border-radius: 10px;
+}
+
+/* Dropdown show class */
+.show { display: block !important; }

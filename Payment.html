@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis | Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="UserPayment.css">
+</head>
+<body>
+    <header class="Login-header">
+        <h1>Axis</h1>
+    </header>
+
+    <main class="Checkout-container">
+        <div class="Summary-Card">
+            <div class="Fare-Header">
+                <span>Final Fare</span>
+                <h2>₹450.00</h2>
+            </div>
+            
+            <div class="Fare-Breakdown">
+                <div class="fare-row">
+                    <span>Base Fare</span>
+                    <span>₹380.00</span>
+                </div>
+                <div class="fare-row">
+                    <span>Taxes & Fees</span>
+                    <span>₹45.00</span>
+                </div>
+                <div class="fare-row">
+                    <span>Service Fee</span>
+                    <span>₹25.00</span>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="section-label">Select Payment Method</h3>
+        <div class="Methods-List">
+            <label class="Method-Item">
+                <input type="radio" name="pay" checked>
+                <div class="Method-Box">
+                    <i class="fa-brands fa-google-pay"></i>
+                    <span>Google Pay / UPI</span>
+                </div>
+            </label>
+
+            <label class="Method-Item">
+                <input type="radio" name="pay">
+                <div class="Method-Box">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Credit / Debit Card</span>
+                </div>
+            </label>
+
+            <label class="Method-Item">
+                <input type="radio" name="pay">
+                <div class="Method-Box">
+                    <i class="fa-solid fa-wallet"></i>
+                    <span>Axis Wallet</span>
+                </div>
+            </label>
+        </div>
+
+        <button class="Confirm-Btn" onclick="handlePayment()">
+            Confirm Payment
+        </button>
+    </main>
+
+    <div id="success-overlay" class="Overlay" style="display: none;">
+        <div class="Success-Content">
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>Payment Successful!</h3>
+            <p>Thank you for riding with Axis.</p>
+            <button onclick="window.location.href='RideRequest.html'">Back to Home</button>
+        </div>
+    </div>
+
+    <script>
+        function handlePayment() {
+            // Show success overlay
+            document.getElementById('success-overlay').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>

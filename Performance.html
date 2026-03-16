@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis | Performance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="Performance.css">
+</head>
+<body>
+    <header>
+        <nav class="Normal-header">
+            <h1>Axis</h1>
+            <ul class="List-elements">
+                <li><a href="DriverDashboard.html" class="Link-element">My Trips</a></li>
+                <li><a href="Performance.html" class="Link-element active">My Stats</a></li>
+                <li class="user-profile right">
+                    <i class="fa-solid fa-circle-user dropbtn" onclick="toggleDropdown()" style="font-size:2.5rem;"></i>
+                    <div id="myDropdown" class="dropdown-content">
+                        <div class="user-info-header"><strong>Kavin</strong></div>
+                        <hr>
+                        <a href="DriverProfile.html"><i class="fa-solid fa-user"></i> My Profile</a>
+                        <a href="index.html" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="Performance-container">
+        <div class="Stats-Header">
+            <h1>My Performance</h1>
+            <p>Last 7 Days</p>
+        </div>
+
+        <div class="Charts-Grid">
+            <div class="Chart-Card">
+    <h3>Weekly Earnings</h3>
+    <div class="Total-Amount">₹4,250.00</div>
+    
+    <div class="Bar-Chart">
+        <div class="Bar-Wrapper"><div class="Bar" style="height: 60%;"></div><span>M</span></div>
+        <div class="Bar-Wrapper"><div class="Bar" style="height: 40%;"></div><span>T</span></div>
+        <div class="Bar-Wrapper"><div class="Bar" style="height: 85%;"></div><span>W</span></div>
+        <div class="Bar-Wrapper"><div class="Bar" style="height: 70%;"></div><span>T</span></div>
+        <div class="Bar-Wrapper"><div class="Bar" style="height: 95%;"></div><span>F</span></div>
+        <div class="Bar-Wrapper"><div class="Bar active" style="height: 50%;"></div><span>S</span></div>
+        <div class="Bar-Wrapper"><div class="Bar" style="height: 25%;"></div><span>S</span></div>
+    </div>
+</div>
+
+            <div class="Chart-Card">
+                <h3>Driver Rating</h3>
+                <div class="Rating-Score">
+                    <span class="Big-Number">4.8</span>
+                    <div class="Stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                </div>
+
+                <div class="Rating-Breakdown">
+                    <div class="Rating-Row">
+                        <span>5 <i class="fa-solid fa-star"></i></span>
+                        <div class="Progress-BG"><div class="Progress-Fill" style="width: 85%;"></div></div>
+                    </div>
+                    <div class="Rating-Row">
+                        <span>4 <i class="fa-solid fa-star"></i></span>
+                        <div class="Progress-BG"><div class="Progress-Fill" style="width: 10%;"></div></div>
+                    </div>
+                    <div class="Rating-Row">
+                        <span>3 <i class="fa-solid fa-star"></i></span>
+                        <div class="Progress-BG"><div class="Progress-Fill" style="width: 3%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+  
+</body>
+  <script>
+        function toggleDropdown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+    </script>
+</html>

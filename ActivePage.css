@@ -1,0 +1,118 @@
+/* Card Container */
+.TripsC {
+    background-color: var(--axis-white);
+    border: 1px solid var(--axis-gray-medium);
+    border-radius: 12px;
+    padding: 20px;
+    width: 95%;          /* Occupy most of the screen on mobile */
+    max-width: 550px;    /* Limit size on desktop */
+    margin: 15px auto;
+    box-shadow: 0 4px 12px var(--axis-gray-light);
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+}
+.TripsC:hover{
+    transform: scale(1.1);
+}
+
+/* Header */
+.Top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.trip-date { font-size: 14px; color: var(--axis-gray-medium); margin: 0; font-weight: 500; }
+.vehicle-type { font-size: 13px; color: var(--axis-gray-medium); margin: 2px 0 0; }
+.Price { font-weight: 700; font-size: 18px; color: var(--axis-black); }
+
+/* The Timeline - Modern Responsive Approach */
+.Route-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: stretch; /* Makes the line stretch to text height */
+}
+
+.route-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6px;    /* Aligns first dot with first line of text */
+    flex-shrink: 0;      /* Prevents dots from squishing */
+}
+
+.dot { width: 8px; height: 8px; background: var(--axis-black); }
+.circle { border-radius: 50%; }
+.square { border-radius: 0; }
+
+.line {
+    width: 2px;
+    flex-grow: 1;         /* Automatically fills the space between dots */
+    background: var(--axis-gray-medium);
+    margin: 4px 0;
+    min-height: 20px;     /* Minimum gap */
+}
+
+.Place-history {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pins one address to top, one to bottom */
+    gap: 15px;
+}
+
+.Place-history p {
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.4;
+    color: var(--axis-black);
+    word-break: break-word; /* Safety for very long words */
+}
+
+/* Footer Section */
+.Drivername_Ratings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--axis-gray-dark);
+    padding-top: 15px;
+    flex-wrap: wrap; /* Wraps items if name is too long on small screens */
+    gap: 10px;
+}
+
+.driver-info { display: flex; align-items: center; gap: 10px; }
+.driver-thumb { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: var(--axis-gray-light); }
+.driver-info p { margin: 0; font-size: 14px; }
+
+.rating-badge {
+    background: var(--axis-gray-light);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+.btn-secondary.full-width {
+    margin: 20px;
+    width: calc(100% - 40px);
+    background-color: var(--axis-black);
+    color: var(--axis-white);
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-secondary.full-width:hover {
+    opacity: 0.9;
+}
+
+/* Specific Mobile Adjustments */
+@media (max-width: 480px) {
+    .TripsC { padding: 15px; }
+    .Price { font-size: 17px; }
+    .Place-history p { font-size: 13px; }
+    .trip-date { font-size: 13px; }
+}

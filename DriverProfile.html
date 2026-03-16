@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis Driver Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="DriverProfile.css">
+</head>
+<body>
+    <header>
+        <Nav class="Normal-header">
+            <h1>Axis</h1>
+            <ul class="List-elements">
+                <li class="Back-btn right">
+                    <button type="submit" class="btn-secondary full-width" onclick="location.href='DriverDashboard.html'">Back</button>
+                </li>
+            </ul>
+        </Nav>
+    </header>
+    
+    <main class="Profile-container">
+        <div class="Profile-Card">
+            <div class="Profile-Header">
+                <div class="Avatar-Circle">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <h1>Hello, Kavin</h1>
+                <p>Verified Driver • Axis Gold</p>
+            </div>
+
+            <div class="Profile-Info-Section">
+                <h3 class="section-title">Personal Details</h3>
+                
+                <div class="info-row">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="info-text">
+                        <span>Full Name</span>
+                        <strong class="Nonedit" id="username">Kavin Kumar</strong>
+                        <input type="text" id="user_name" class="edit">
+                    </div>
+                </div>
+
+                <div class="info-row">
+                    <i class="fa-solid fa-phone"></i>
+                    <div class="info-text">
+                        <span>Mobile</span>
+                        <strong class="Nonedit" id="userphone">+91 9876543210</strong>
+                        <input type="text" id="user_phone" class="edit">
+                    </div>
+                </div>
+
+                <div id="Vehicle-List-Container">
+                    <h3 class="section-title">Vehicle Details</h3>
+                    
+                    <div class="vehicle-entry info-row">
+                        <i class="fa-solid fa-car"></i>
+                        <div class="info-text">
+                            <span>Primary Vehicle</span>
+                            <strong class="Nonedit" id="carmodel">Maruti Suzuki Swift</strong>
+                            <input type="text" id="car_model" class="edit">
+                            
+                            <p class="Nonedit" id="plate" style="font-size: 14px; color: #666; margin-top: 2px;">KA 19 MG 1234</p>
+                            <input type="text" id="car_plate" class="edit">
+                        </div>
+                    </div>
+                    </div>
+
+                <button class="add-vehicle-btn" id="AddVehicleBtn" onclick="addNewVehicle()">
+                    <i class="fa-solid fa-plus"></i> Add Another Vehicle
+                </button>
+            </div>
+     
+            <div class="Action-Buttons">
+                <button class="edit-profile-btn" id="Editbtn" onclick="Togglemode()">Edit Driver Profile</button>
+                <button class="edit" id="Savebtn" onclick="editmode()">Save Changes</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Logic for Editing Personal and Primary Vehicle Details
+        function Togglemode() {
+            const fields = [
+                ['username', 'user_name'],
+                ['userphone', 'user_phone'],
+                ['carmodel', 'car_model'],
+                ['plate', 'car_plate']
+            ];
+
+            fields.forEach(pair => {
+                const textEl = document.getElementById(pair[0]);
+                const inputEl = document.getElementById(pair[1]);
+                
+                inputEl.value = textEl.innerText;
+                
+                textEl.classList.toggle('edit');
+                inputEl.classList.toggle('edit');
+                inputEl.classList.toggle('main-input');
+            });
+
+            // Hide the "Add" button while editing primary details to avoid UI clutter
+            document.getElementById('AddVehicleBtn').classList.toggle('edit');
+
+            document.getElementById('Editbtn').classList.toggle('edit');
+            document.getElementById('Savebtn').classList.toggle('edit');
+            document.getElementById('Savebtn').classList.toggle('edit-profile-btn');
+        }
+
+        function editmode() {
+            const fields = [
+                ['username', 'user_name'],
+                ['userphone', 'user_phone'],
+                ['carmodel', 'car_model'],
+                ['plate', 'car_plate']
+            ];
+
+            fields.forEach(pair => {
+                const textEl = document.getElementById(pair[0]);
+                const inputEl = document.getElementById(pair[1]);
+                
+                textEl.innerText = inputEl.value;
+                
+                textEl.classList.toggle('edit');
+                inputEl.classList.toggle('edit');
+                inputEl.classList.toggle('main-input');
+            });
+
+            const nameValue = document.getElementById('username').innerText;
+            const firstName = nameValue.split(' ')[0];
+            document.querySelector('.Profile-Header h1').innerText = "Hello, " + firstName;
+
+            document.getElementById('AddVehicleBtn').classList.toggle('edit');
+
+            document.getElementById('Editbtn').classList.toggle('edit');
+            document.getElementById('Savebtn').classList.toggle('edit');
+            document.getElementById('Savebtn').classList.toggle('edit-profile-btn');
+        }
+
+        // Logic for Adding New Vehicle Cards
+        function addNewVehicle() {
+            const model = prompt("Enter Vehicle Model (e.g., Honda City):");
+            const plate = prompt("Enter Plate Number:");
+
+            if (model && plate) {
+                const container = document.getElementById('Vehicle-List-Container');
+                
+                const newVehicleHTML = `
+                    <div class="vehicle-entry info-row fade-in" style="border-top: 1px solid #eee; margin-top: 10px; padding-top: 10px;">
+                        <i class="fa-solid fa-car-side"></i>
+                        <div class="info-text">
+                            <span>Additional Vehicle</span>
+                            <strong>${model}</strong>
+                            <p style="font-size: 14px; color: #666;">${plate}</p>
+                        </div>
+                        <button class="delete-mini-btn" onclick="this.parentElement.remove()" style="margin-left: auto; color: red; background: none; border: none; cursor: pointer;">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                container.insertAdjacentHTML('beforeend', newVehicleHTML);
+            }
+        }
+         window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+    </script>
+</body>
+</html>
