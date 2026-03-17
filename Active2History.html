@@ -24,7 +24,7 @@
     
     <div id="myDropdown" class="dropdown-content">
         <div class="user-info-header">
-            <strong>Kshama</strong>
+            <strong id="username"></strong>
         </div>
         <hr>
         <a href="Profile.html"><i class="fa-solid fa-user"></i> My Profile</a>
@@ -112,5 +112,9 @@ window.onload = function() {
     if(start) document.querySelector('.startaddress').innerText = start;
     if(end) document.querySelector('.endaddress').innerText = end;
 };
+window.onload = function()
+    {
+        document.getElementById('username').innerText=localStorage.getItem('firstname')
+    }
 </script>
 </html>

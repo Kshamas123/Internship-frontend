@@ -27,7 +27,7 @@
             <div class="Avatar-Circle">
                 <i class="fa-solid fa-user"></i>
             </div>
-            <h1>Hello, Reema</h1>
+            <h1 id="user"></h1>
             <p>Member since March 2026</p>
         </div>
 
@@ -36,7 +36,7 @@
                 <i class="fa-solid fa-id-card"></i>
                 <div class="info-text">
                     <span>Full Name</span>
-                    <strong class="Nonedit" id="username">Reema S</strong>
+                    <strong class="Nonedit" id="username"></strong>
                     <input type="text" id="user_name" class="edit">
                 </div>
             </div>
@@ -124,6 +124,7 @@ document.getElementById('user_email').value = useremail;
         document.getElementById('userphone').innerText=userphone
         document.getElementById('useremail').innerText=useremail
 
+        localStorage.setItem('firstname',username)
         document.getElementById('Editbtn').classList.toggle('edit-profile-btn')
         document.getElementById('Editbtn').classList.toggle('edit')
         document.getElementById('Savebtn').classList.toggle('edit')
@@ -131,6 +132,11 @@ document.getElementById('user_email').value = useremail;
 
        const firstName = username.split(' ')[0];
     document.querySelector('.Profile-Header h1').innerText = "Hello, " + firstName;
+    }
+    window.onload = function()
+    {
+        document.getElementById('user').innerText="Hello "+ localStorage.getItem('firstname')
+        document.getElementById('username').innerText=localStorage.getItem('firstname')
     }
 </script>
 </html>
