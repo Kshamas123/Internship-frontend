@@ -89,7 +89,7 @@
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const phonePattern = /^\+?[0-9]{10,15}$/;
         const normalizedphone = user_no.replace(/[^0-9+a-zA-Z@._-]/g, ''); 
-        if(user_email.length<=0 || user_name.length<=0 || user_no<=0 || user_password<=0 || !emailPattern.test(user_email) || !phonePattern.test(normalizedphone))
+    if(user_email.length<=0 || user_name.length<=0 || user_no<=0 || user_password<=0 || !emailPattern.test(user_email) || !phonePattern.test(normalizedphone))
     {
         alert("Enter all the details")
         return false;
@@ -98,6 +98,8 @@
     {
         console.log(user_name)
         localStorage.setItem('firstname',user_name)
+        localStorage.setItem('emailuser',user_email)
+        localStorage.setItem('phoneno',user_no)
         location.href='RideRequest.html'
     }
     }

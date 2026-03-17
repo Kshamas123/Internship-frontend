@@ -15,14 +15,14 @@
         <Nav class="Normal-header">
             <h1>Axis</h1>
             <ul class="List-elements">
-                <li><a href="Trips.html" class="Link-element active">My Trips</a></li>
+                <li><a href="DriverDashboard.html" class="Link-element active">My Trips</a></li>
                 <li><a href="Performance.html" class="Link-element">My Stats</a></li>
                 <li class="user-profile right">
                     <i class="fa-solid fa-circle-user dropbtn" onclick="toggleDropdown()" style="font-size:2.5rem;"></i>
 
                     <div id="myDropdown" class="dropdown-content">
                         <div class="user-info-header">
-                            <strong>Kavin</strong>
+                            <strong id="Dname"></strong>
                         </div>
                         <hr>
                         <a href="DriverProfile.html"><i class="fa-solid fa-user"></i> My Profile</a>
@@ -161,6 +161,12 @@ function Decline(buttonElement) {
                 }
             }
         }
+    }
+     window.onload=function()
+    {
+        
+        document.getElementById('Dname').innerText=localStorage.getItem('dname')
+        
     }
 </script>
 </html>

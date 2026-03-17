@@ -70,6 +70,9 @@
     }
     else
     {
+        localStorage.setItem('dname',user_name)
+        localStorage.setItem('dphone',user_no)
+
         sessionStorage.setItem('personaldetails','Filled')
         location.href='DriverSignupuser.html'
     }

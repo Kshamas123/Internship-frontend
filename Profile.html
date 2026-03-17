@@ -45,7 +45,7 @@
                 <i class="fa-solid fa-phone"></i>
                 <div class="info-text">
                     <span>Mobile Number</span>
-                    <strong class="Nonedit" id="userphone">+91 912345569</strong>
+                    <strong class="Nonedit" id="userphone"></strong>
                     <input type="text" id="user_phone" class="edit">
                 </div>
             </div>
@@ -54,7 +54,7 @@
                 <i class="fa-solid fa-envelope"></i>
                 <div class="info-text">
                     <span>Email Address</span>
-                    <strong class="Nonedit" id="useremail">Reema@gmail.com</strong>
+                    <strong class="Nonedit" id="useremail"></strong>
                     <input type="email" id="user_email" class="edit">
                 </div>
             </div>
@@ -125,6 +125,9 @@ document.getElementById('user_email').value = useremail;
         document.getElementById('useremail').innerText=useremail
 
         localStorage.setItem('firstname',username)
+        localStorage.setItem('phoneno',userphone)
+        localStorage.setItem('emailuser',useremail)
+
         document.getElementById('Editbtn').classList.toggle('edit-profile-btn')
         document.getElementById('Editbtn').classList.toggle('edit')
         document.getElementById('Savebtn').classList.toggle('edit')
@@ -137,6 +140,8 @@ document.getElementById('user_email').value = useremail;
     {
         document.getElementById('user').innerText="Hello "+ localStorage.getItem('firstname')
         document.getElementById('username').innerText=localStorage.getItem('firstname')
+        document.getElementById('useremail').innerText=localStorage.getItem('emailuser')
+        document.getElementById('userphone').innerText=localStorage.getItem('phoneno')
     }
 </script>
 </html>

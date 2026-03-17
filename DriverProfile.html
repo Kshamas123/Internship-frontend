@@ -26,7 +26,7 @@
                 <div class="Avatar-Circle">
                     <i class="fa-solid fa-user"></i>
                 </div>
-                <h1>Hello, Kavin</h1>
+                <h1 id="greetdriver"></h1>
                 <p>Verified Driver • Axis Gold</p>
             </div>
 
@@ -37,7 +37,7 @@
                     <i class="fa-solid fa-user"></i>
                     <div class="info-text">
                         <span>Full Name</span>
-                        <strong class="Nonedit" id="username">Kavin Kumar</strong>
+                        <strong class="Nonedit" id="username"></strong>
                         <input type="text" id="user_name" class="edit">
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                     <i class="fa-solid fa-phone"></i>
                     <div class="info-text">
                         <span>Mobile</span>
-                        <strong class="Nonedit" id="userphone">+91 9876543210</strong>
+                        <strong class="Nonedit" id="userphone"></strong>
                         <input type="text" id="user_phone" class="edit">
                     </div>
                 </div>
@@ -129,6 +129,8 @@
 
             const nameValue = document.getElementById('username').innerText;
             const firstName = nameValue.split(' ')[0];
+            localStorage.setItem('dname',firstName)
+            localStorage.setItem('dphone',document.getElementById('userphone').innerText)
             document.querySelector('.Profile-Header h1').innerText = "Hello, " + firstName;
 
             document.getElementById('AddVehicleBtn').classList.toggle('edit');
@@ -136,6 +138,7 @@
             document.getElementById('Editbtn').classList.toggle('edit');
             document.getElementById('Savebtn').classList.toggle('edit');
             document.getElementById('Savebtn').classList.toggle('edit-profile-btn');
+            
         }
 
         // Logic for Adding New Vehicle Cards
@@ -173,6 +176,14 @@
                 }
             }
         }
+    }
+    window.onload=function()
+    {
+        
+        document.getElementById('greetdriver').innerText="Hello, "+localStorage.getItem('dname')
+        document.getElementById('username').innerText=localStorage.getItem('dname')
+        document.getElementById('userphone').innerText=localStorage.getItem('dphone')
+
     }
     </script>
 </body>
