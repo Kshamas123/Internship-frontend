@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<!-- <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="GlobalStyle.css">
     <link rel="stylesheet" href="RideRequest.css">
-</head>
+</head> -->
+
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="GlobalStyle.css">
+    <link rel="stylesheet" href="RideRequest.css">
+    <style>
+        
+        
+       
+
+        .controls { margin-bottom: 20px; display: flex; gap: 10px; }
+        /* input { padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 250px; } */
+        /* .active { border: 2px solid #276ef1; outline: none; } */
+    </style>
 
 <body>
     <header>
@@ -63,17 +77,18 @@
         <div class="Trip-box">
             <div id="Trip-rquest-image">
                 <div id="Trip-rquest-image">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15555.18517791924!2d74.83901575!3d12.9208103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1773337104154!5m2!1sen!2sin"
-                        class="map-image" allowfullscreen="yes" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                   <div id="map-image"></div>
                 </div>
             </div>
         </div>
-    </div>
+        
     </div>
 </body>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <script>
+
+    
     const indianLocations = [
         // BENGALURU, KARNATAKA
         { locality: "BTM Layout 2nd Stage", city: "Bengaluru", state: "Karnataka", pincode: "560076" },
@@ -186,6 +201,61 @@
         { locality: "Sector 17", city: "Chandigarh", state: "Chandigarh", pincode: "160017" },
         { locality: "Banjari Layout", city: "Raipur", state: "Chhattisgarh", pincode: "492001" }
     ];
+    let map, pickupMarker, dropMarker; // Declare markers globally
+let activeInputId = 'Pickup_Location';
+
+function initMap() {
+    // Matches your <div id="map-image">
+    map = L.map('map-image').setView([12.9716, 77.5946], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Force recalculation of the map container size
+    setTimeout(() => {
+        map.invalidateSize();
+    }, 400);
+
+    map.on('click', async function(e) {
+        const lat = e.latlng.lat;
+        const lng = e.latlng.lng;
+
+        const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}&accept-language=en`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            const address = data.display_name;
+
+            document.getElementById(activeInputId).value = address;
+
+            if (activeInputId === 'Pickup_Location') {
+                if (pickupMarker) map.removeLayer(pickupMarker);
+                pickupMarker = L.marker([lat, lng]).addTo(map).bindPopup("<b>Pickup:</b><br>" + address).openPopup();
+                
+                // Switch focus to Drop box automatically
+                activeInputId = 'Drop_Location'; 
+                document.getElementById('Drop_Location').focus();
+            } else {
+                if (dropMarker) map.removeLayer(dropMarker);
+                dropMarker = L.marker([lat, lng]).addTo(map).bindPopup("<b>Drop:</b><br>" + address).openPopup();
+            }
+
+        } catch (error) {
+            console.error("Geocoding failed:", error);
+        }
+    });
+}
+
+// CRITICAL: Un-comment this so the code actually runs
+window.onload = function() {
+    const userDisplay = document.getElementById('username');
+    if(userDisplay) {
+        userDisplay.innerText = localStorage.getItem('firstname') || "User";
+    }
+    initMap();
+};
 
     function toggleDropdown() {
         document.getElementById("myDropdown").classList.toggle("show");
@@ -287,23 +357,60 @@
     function GotoTripshowpage(event)
     {
         event.preventDefault();
+        if(document.getElementById('Pickup_Location').value==document.getElementById('Drop_Location').value)
+    {
+        alert("pickup location and drop location cannot be the same")
+        document.getElementById('Pickup_Location').value=""
+        document.getElementById('Drop_Location').value=""
+        activeInputId="Pickup_Location"
+        if (pickupMarker) 
+        {
+            map.removeLayer(pickupMarker);
+        }
+        if (dropMarker) 
+        {
+            map.removeLayer(dropMarker);
+        }
+        // dropMarker = L.marker([lat, lng]).addTo(map).bindPopup("<b>Drop:</b><br>" + address).openPopup();
+        
+        return false;
+    }
         if(document.getElementById('Pickup_Location').value && document.getElementById('Drop_Location').value)
     {
+        
         sessionStorage.setItem('StartLoc', document.getElementById("Pickup_Location").value);
         sessionStorage.setItem('EndLoc', document.getElementById("Drop_Location").value);
+        document.getElementById('Pickup_Location').value=""
+        document.getElementById('Drop_Location').value=""
         location.href='Active2History.html'
     }
     else
     {
+         document.getElementById('Pickup_Location').value=""
+        document.getElementById('Drop_Location').value=""
+        activeInputId="Pickup_Location"
+        if (pickupMarker) 
+        {
+            map.removeLayer(pickupMarker);
+        }
+        if (dropMarker) 
+        {
+            map.removeLayer(dropMarker);
+        }
         sessionStorage.clear()
         alert('Please select Your pickup points')
         return false;
     }
     }
-    window.onload = function()
+    function findplacename(event)
     {
-        document.getElementById('username').innerText=localStorage.getItem('firstname')
+        console.log(event)
     }
+    // window.onload = function()
+    // {
+    //     document.getElementById('username').innerText=localStorage.getItem('firstname')
+    //     initMap();
+    // }
 </script>
 
 </html>
