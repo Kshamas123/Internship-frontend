@@ -137,7 +137,8 @@ window.onclick = function(event) {
 }
 window.onload = function()
     {
-        document.getElementById('username').innerText=localStorage.getItem('firstname')
+       const current_user=JSON.parse(localStorage.getItem('current_user'))
+        document.getElementById('username').innerText=current_user.u_name
     }
 </script>
 

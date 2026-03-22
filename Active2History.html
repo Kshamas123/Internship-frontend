@@ -112,7 +112,8 @@ window.onload = function() {
     if(start) document.querySelector('.startaddress').innerText = start;
     if(end) document.querySelector('.endaddress').innerText = end;
 
-    document.getElementById('username').innerText=localStorage.getItem('firstname')
+   const current_user=JSON.parse(localStorage.getItem('current_user'))
+        document.getElementById('username').innerText=current_user.u_name
 };
 
 </script>

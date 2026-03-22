@@ -77,6 +77,28 @@
         </div>
     </div>
 </section>
+ <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Axis</h3>
+                <p>Redefining how the world moves. Reliable rides, empowered drivers.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Safety</a>
+                <a href="#">Help Center</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Axis Technologies Inc. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 <script>
     function GotoNextpage(event)
@@ -89,18 +111,32 @@
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const phonePattern = /^\+?[0-9]{10,15}$/;
         const normalizedphone = user_no.replace(/[^0-9+a-zA-Z@._-]/g, ''); 
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if(user_email.length<=0 || user_name.length<=0 || user_no<=0 || user_password<=0 || !emailPattern.test(user_email) || !phonePattern.test(normalizedphone))
     {
         alert("Enter all the details")
         return false;
     }
     else
+    if(!regex.test(user_password))
     {
-        console.log(user_name)
-        localStorage.setItem('firstname',user_name)
-        localStorage.setItem('emailuser',user_email)
-        localStorage.setItem('phoneno',user_no)
-        location.href='RideRequest.html'
+        alert("The password is not valid , should be atleast of 8 characters having at least one lower case letter ,uppercase ,digits and special symbol")
+        return false;
+    }
+    else
+    {
+        const newUser = {
+                u_name: user_name,
+                u_email: user_email,
+                u_phone: user_no,
+                u_password: user_password
+            };
+    const user_list = JSON.parse(localStorage.getItem('user_list')) || [];
+            user_list.push(newUser);
+            localStorage.setItem('user_list', JSON.stringify(user_list));
+
+            alert("Registration successful!");
+            window.location.href = 'Login.html';
     }
     }
 </script>

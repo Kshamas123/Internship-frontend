@@ -124,9 +124,16 @@ document.getElementById('user_email').value = useremail;
         document.getElementById('userphone').innerText=userphone
         document.getElementById('useremail').innerText=useremail
 
-        localStorage.setItem('firstname',username)
-        localStorage.setItem('phoneno',userphone)
-        localStorage.setItem('emailuser',useremail)
+        const user=JSON.parse(localStorage.getItem('user_list'))
+        const index=localStorage.getItem('index_user')
+
+        user[index].u_name=username
+        user[index].u_phone=userphone
+        user[index].u_email=useremail
+
+        localStorage.setItem('user_list', JSON.stringify(user));
+        localStorage.setItem('current_user',JSON.stringify(user[index]))
+
 
         document.getElementById('Editbtn').classList.toggle('edit-profile-btn')
         document.getElementById('Editbtn').classList.toggle('edit')
@@ -138,10 +145,12 @@ document.getElementById('user_email').value = useremail;
     }
     window.onload = function()
     {
-        document.getElementById('user').innerText="Hello "+ localStorage.getItem('firstname')
-        document.getElementById('username').innerText=localStorage.getItem('firstname')
-        document.getElementById('useremail').innerText=localStorage.getItem('emailuser')
-        document.getElementById('userphone').innerText=localStorage.getItem('phoneno')
+        const current_user=JSON.parse(localStorage.getItem('current_user'))
+        document.getElementById('username').innerText=current_user.u_name
+        document.getElementById('user').innerText="Hello "+ current_user.u_name
+        document.getElementById('useremail').innerText=current_user.u_email
+        document.getElementById('userphone').innerText=current_user.u_phone
+
     }
 </script>
 </html>
