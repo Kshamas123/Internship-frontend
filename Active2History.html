@@ -55,6 +55,7 @@
         <div class="Date_vehicle">
             <p class="trip-date"></p>
         </div>
+        <div class="Price" id="fare-price"></div>
     </div>
 
     <div class="Route-container">
@@ -135,6 +136,8 @@ window.onload = function() {
 
    const current_user=JSON.parse(localStorage.getItem('current_user'))
         document.getElementById('username').innerText=current_user.u_name
+
+    document.getElementById('fare-price').innerText="\u20B9"+ localStorage.getItem('price')
 };
 
 </script>

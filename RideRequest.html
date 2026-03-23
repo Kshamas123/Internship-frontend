@@ -10,19 +10,20 @@
     <link rel="stylesheet" href="RideRequest.css">
 </head> -->
 
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="GlobalStyle.css">
-    <link rel="stylesheet" href="RideRequest.css">
-    <style>
-        
-        
-       
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="GlobalStyle.css">
+<link rel="stylesheet" href="RideRequest.css">
+<style>
+    .controls {
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+    }
 
-        .controls { margin-bottom: 20px; display: flex; gap: 10px; }
-        /* input { padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 250px; } */
-        /* .active { border: 2px solid #276ef1; outline: none; } */
-    </style>
+    /* input { padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 250px; } */
+    /* .active { border: 2px solid #276ef1; outline: none; } */
+</style>
 
 <body>
     <header>
@@ -70,20 +71,21 @@
                             oninput="showOptions_2()" class="main-input" required autocomplete="off">
                         <ul id="placelist2"></ul>
                     </div>
-                    <button type="submit" class="btn-secondary full-width" onclick="GotoTripshowpage(event)">Continue</button>
+                    <button type="submit" class="btn-secondary full-width"
+                        onclick="GotoTripshowpage(event)">Continue</button>
                 </form>
             </div>
         </div>
         <div class="Trip-box">
             <div id="Trip-rquest-image">
                 <div id="Trip-rquest-image">
-                   <div id="map-image"></div>
+                    <div id="map-image"></div>
                 </div>
             </div>
         </div>
-        
+
     </div>
-     <footer class="main-footer">
+    <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Axis</h3>
@@ -106,11 +108,11 @@
         </div>
     </footer>
 </body>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
 
-    
+
     const indianLocations = [
         // BENGALURU, KARNATAKA
         { locality: "BTM Layout 2nd Stage", city: "Bengaluru", state: "Karnataka", pincode: "560076" },
@@ -224,60 +226,61 @@
         { locality: "Banjari Layout", city: "Raipur", state: "Chhattisgarh", pincode: "492001" }
     ];
     let map, pickupMarker, dropMarker; // Declare markers globally
-let activeInputId = 'Pickup_Location';
+    let activeInputId = 'Pickup_Location';
 
-function initMap() {
-    // Matches your <div id="map-image">
-    map = L.map('map-image').setView([12.9716, 77.5946], 13);
+    function initMap() {
+        // Matches your <div id="map-image">
+        map = L.map('map-image').setView([12.9716, 77.5946], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
 
-    // Force recalculation of the map container size
-    setTimeout(() => {
-        map.invalidateSize();
-    }, 400);
+        // Force recalculation of the map container size
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 400);
 
-    map.on('click', async function(e) {
-        const lat = e.latlng.lat;
-        const lng = e.latlng.lng;
+        map.on('click', async function (e) {
+            const lat = e.latlng.lat;
+            const lng = e.latlng.lng;
 
-        const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}&accept-language=en`;
+            const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}&accept-language=en`;
 
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            const address = data.display_name;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const address = data.display_name;
 
-            document.getElementById(activeInputId).value = address;
+                document.getElementById(activeInputId).value = address;
 
-            if (activeInputId === 'Pickup_Location') {
-                if (pickupMarker) map.removeLayer(pickupMarker);
-                pickupMarker = L.marker([lat, lng]).addTo(map).bindPopup("<b>Pickup:</b><br>" + address).openPopup();
-                
-                // Switch focus to Drop box automatically
-                activeInputId = 'Drop_Location'; 
-                document.getElementById('Drop_Location').focus();
-            } else {
-                if (dropMarker) map.removeLayer(dropMarker);
-                dropMarker = L.marker([lat, lng]).addTo(map).bindPopup("<b>Drop:</b><br>" + address).openPopup();
-                activeInputId = 'Pickup_Location'
-                document.getElementById('Pickup_Location').focus();
+                if (activeInputId === 'Pickup_Location') {
+                    if (pickupMarker) map.removeLayer(pickupMarker);
+                    pickupMarker = L.marker([lat, lng]).addTo(map).bindPopup("<b>Pickup:</b><br>" + address).openPopup();
+
+                    // Switch focus to Drop box automatically
+                    activeInputId = 'Drop_Location';
+                    document.getElementById('Drop_Location').focus();
+                } else {
+                    if (dropMarker) map.removeLayer(dropMarker);
+                    dropMarker = L.marker([lat, lng]).addTo(map).bindPopup("<b>Drop:</b><br>" + address).openPopup();
+                    activeInputId = 'Pickup_Location'
+                    document.getElementById('Pickup_Location').focus();
+
+                }
+
+            } catch (error) {
+                console.error("Geocoding failed:", error);
             }
+        });
+    }
 
-        } catch (error) {
-            console.error("Geocoding failed:", error);
-        }
-    });
-}
-
-// CRITICAL: Un-comment this so the code actually runs
-window.onload = function() {
-    const current_user=JSON.parse(localStorage.getItem('current_user'))
-        document.getElementById('username').innerText=current_user.u_name
-    initMap();
-};
+    // CRITICAL: Un-comment this so the code actually runs
+    window.onload = function () {
+        const current_user = JSON.parse(localStorage.getItem('current_user'))
+        document.getElementById('username').innerText = current_user.u_name
+        initMap();
+    };
 
     function toggleDropdown() {
         document.getElementById("myDropdown").classList.toggle("show");
@@ -376,56 +379,64 @@ window.onload = function() {
         ul.style.display = count > 0 ? "block" : "none";
     }
 
-    function GotoTripshowpage(event)
-    {
+    function GotoTripshowpage(event) {
         event.preventDefault();
-        if(document.getElementById('Pickup_Location').value==document.getElementById('Drop_Location').value)
-    {
-        alert("pickup location and drop location cannot be the same")
-        document.getElementById('Pickup_Location').value=""
-        document.getElementById('Drop_Location').value=""
-        activeInputId="Pickup_Location"
-        if (pickupMarker) 
-        {
-            map.removeLayer(pickupMarker);
+        if (document.getElementById('Pickup_Location').value == document.getElementById('Drop_Location').value) {
+            alert("pickup location and drop location cannot be the same")
+            document.getElementById('Pickup_Location').value = ""
+            document.getElementById('Drop_Location').value = ""
+            activeInputId = "Pickup_Location"
+            if (pickupMarker) {
+                map.removeLayer(pickupMarker);
+            }
+            if (dropMarker) {
+                map.removeLayer(dropMarker);
+            }
+            // dropMarker = L.marker([lat, lng]).addTo(map).bindPopup("<b>Drop:</b><br>" + address).openPopup();
+
+            return false;
         }
-        if (dropMarker) 
-        {
-            map.removeLayer(dropMarker);
+        if (document.getElementById('Pickup_Location').value && document.getElementById('Drop_Location').value) {
+
+            sessionStorage.setItem('StartLoc', document.getElementById("Pickup_Location").value);
+            sessionStorage.setItem('EndLoc', document.getElementById("Drop_Location").value);
+            document.getElementById('Pickup_Location').value = ""
+            document.getElementById('Drop_Location').value = ""
+            if (pickupMarker && dropMarker) {
+                const p1 = pickupMarker.getLatLng();
+                const p2 = dropMarker.getLatLng();
+
+                // Distance in meters, then convert to KM
+                const distanceMeter = p1.distanceTo(p2);
+                const distanceKm = (distanceMeter / 1000).toFixed(2);
+
+                console.log("Distance is: " + distanceKm + " km");
+                const base = 50;
+                const rate = 12;
+                const bookingFee = 10;
+
+                const estimate = base + (distanceKm * rate) + bookingFee;
+                localStorage.setItem('price',estimate)
+            }
+            location.href = 'Active2History.html'
+            return;
         }
-        // dropMarker = L.marker([lat, lng]).addTo(map).bindPopup("<b>Drop:</b><br>" + address).openPopup();
-        
-        return false;
-    }
-        if(document.getElementById('Pickup_Location').value && document.getElementById('Drop_Location').value)
-    {
-        
-        sessionStorage.setItem('StartLoc', document.getElementById("Pickup_Location").value);
-        sessionStorage.setItem('EndLoc', document.getElementById("Drop_Location").value);
-        document.getElementById('Pickup_Location').value=""
-        document.getElementById('Drop_Location').value=""
-        location.href='Active2History.html'
-    }
-    else
-    {
-         document.getElementById('Pickup_Location').value=""
-        document.getElementById('Drop_Location').value=""
-        activeInputId="Pickup_Location"
-        if (pickupMarker) 
-        {
-            map.removeLayer(pickupMarker);
+        else {
+            document.getElementById('Pickup_Location').value = ""
+            document.getElementById('Drop_Location').value = ""
+            activeInputId = "Pickup_Location"
+            if (pickupMarker) {
+                map.removeLayer(pickupMarker);
+            }
+            if (dropMarker) {
+                map.removeLayer(dropMarker);
+            }
+            sessionStorage.clear()
+            alert('Please select Your pickup points')
+            return false;
         }
-        if (dropMarker) 
-        {
-            map.removeLayer(dropMarker);
-        }
-        sessionStorage.clear()
-        alert('Please select Your pickup points')
-        return false;
     }
-    }
-    function findplacename(event)
-    {
+    function findplacename(event) {
         console.log(event)
     }
     // window.onload = function()
