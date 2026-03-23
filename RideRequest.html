@@ -262,6 +262,8 @@ function initMap() {
             } else {
                 if (dropMarker) map.removeLayer(dropMarker);
                 dropMarker = L.marker([lat, lng]).addTo(map).bindPopup("<b>Drop:</b><br>" + address).openPopup();
+                activeInputId = 'Pickup_Location'
+                document.getElementById('Pickup_Location').focus();
             }
 
         } catch (error) {
